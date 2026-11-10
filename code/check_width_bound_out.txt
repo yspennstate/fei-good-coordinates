@@ -1,0 +1,1 @@
+2557 nonconstant DNFs; max over coords of E/Inf - rhs(2.1) = -2.1086 (must be <= 0); max over terms of E/Inf(max-inf literal) - bound = -2.3304 (must be <= 0)

@@ -1,0 +1,1 @@
+444 coordinates in random compositions g(h,...,h) of 4 to 16 variables: max |E or Inf difference| = 3.33e-16

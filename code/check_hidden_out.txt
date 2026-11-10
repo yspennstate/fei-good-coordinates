@@ -1,0 +1,8 @@
+k= 3 Inf_x=1.250e-01 (2^-k=1.250e-01) E_x/Inf_x=3.523112  max other Inf=6.250e-01
+k= 5 Inf_x=3.125e-02 (2^-k=3.125e-02) E_x/Inf_x=4.242673  max other Inf=4.062e-01
+k= 7 Inf_x=7.812e-03 (2^-k=7.812e-03) E_x/Inf_x=4.988771  max other Inf=3.203e-01
+k= 9 Inf_x=1.953e-03 (2^-k=1.953e-03) E_x/Inf_x=5.783424  max other Inf=2.754e-01
+k=11 Inf_x=4.883e-04 (2^-k=4.883e-04) E_x/Inf_x=6.618467  max other Inf=2.466e-01
+k=13 Inf_x=1.221e-04 (2^-k=1.221e-04) E_x/Inf_x=7.482886  max other Inf=2.257e-01
+k=15 Inf_x=3.052e-05 (2^-k=3.052e-05) E_x/Inf_x=8.368529  max other Inf=2.095e-01
+k=17 Inf_x=7.629e-06 (2^-k=7.629e-06) E_x/Inf_x=9.269852  max other Inf=1.964e-01

@@ -1,0 +1,13 @@
+mu* = -0.03491850999402611945207115  slope of the mean map there: 2.00769569488
+start ['0.9988', '0', '0.9988'] -> 4.505917236818 4.5128075412776 4.5128113498431 4.5128113498443
+start ['0.3', '0.5', '0.4'] -> 5.8089701681869 5.8141379487486 5.8141408051727 5.8141408051736
+start ['0.01', '2.0', '0.2'] -> 10.544250640852 10.544595161001 10.544595351429 10.544595351429
+-- realizable starts: the actual state after a bottom word, mean replaced by mu*, then M^k pinned --
+  D: actual mean -0.03515625, P1/Inf^2 = 1.0
+     pinned M^60 limit: 4.5064554626637
+  D,M: actual mean -0.035395818, P1/Inf^2 = 1.0
+     pinned M^60 limit: 4.5064428021902
+  D,M,M: actual mean -0.035876791, P1/Inf^2 = 1.0
+     pinned M^60 limit: 4.5064352687072
+  M: actual mean 0.03515625, P1/Inf^2 = 1.0
+     pinned M^60 limit: 4.5064554626637

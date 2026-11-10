@@ -1,0 +1,7 @@
+k=3: min odd |2^k Maj^| = 4.0000 >= bound 0.6667: True;  L^ = s Maj^/(k+1): True
+k=5: min odd |2^k Maj^| = 4.0000 >= bound 0.5333: True;  L^ = s Maj^/(k+1): True
+k=7: min odd |2^k Maj^| = 8.0000 >= bound 0.5714: True;  L^ = s Maj^/(k+1): True
+k=9: min odd |2^k Maj^| = 12.0000 >= bound 0.7111: True;  L^ = s Maj^/(k+1): True
+k=11: min odd |2^k Maj^| = 24.0000 >= bound 0.9697: True;  L^ = s Maj^/(k+1): True
+k=13: min odd |2^k Maj^| = 40.0000 >= bound 1.4066: True;  L^ = s Maj^/(k+1): True
+sq coeffs x16: [1, 9, 1, 1, 1, 1, 1, 1]  P1 3/4 P2 1/4 P12 1/8 P1*P2 3/16
