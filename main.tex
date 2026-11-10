@@ -508,9 +508,11 @@ The proof for $a>0$ fails at $a=0$, where the leaves contribute $kws2^{1-w}(1-2^
 side. Majority blocks, as in Proposition~\ref{prop:maxinf}, only reach $a>1$, because the leaf influences of
 $\mathrm{Maj}_b$ sum to order $\sqrt b$ while those of $T(w,s)$ sum to order $w$. The proposition excludes uniform
 averaging of the ratios ($a=-1$) and inverse-influence weights. Among power weights only $a=0$ remains, and that case
-is the monotone conjecture in the form $\sum_iE_i\le C\,I$. A weighted selection rule therefore needs weights that
-depend on more than $\Inf_i$: in the proof, $\Inf_x$ is the same for $F$ and $F_w$, while the other influences can be
-made as small and as numerous as we like at bounded total.
+is the monotone conjecture in the form $\sum_iE_i\le C\,I$. The same construction excludes the weights
+$\Inf_i\,g(\Inf_i)$ for every $g$ with $g(t)\log(1/t)\to0$ as $t\to0$: the leaf influences of $F_w$ are of order
+$2^{-w}$, so the leaves contribute $O(kw\,g(2^{1-w}))$ to the right side. It says nothing about weights at or above
+$\Inf_i/\log(1/\Inf_i)$, the scale of Talagrand's inequality~\cite{Tal}, which keeps $\sum_i\Inf_i/\log(1/\Inf_i)$ at
+least a constant times the variance.
 
 \begin{remark}
 The spectral sample of a monotone function need not be positively correlated. For $x_1\wedge(x_2\vee x_3)$ one finds
@@ -586,6 +588,7 @@ arXiv:2609.21563, 2026.
 \url{https://github.com/yspennstate/han-question-read-once-formulas}, 2026.
 \bibitem{Shm2} Y.~Shmalo, The one-coordinate step in the Fourier entropy-influence conjecture,
 \url{https://github.com/yspennstate/fourier-entropy-influence-one-coordinate}, 2026.
+\bibitem{Tal} M.~Talagrand, On Russo's approximate zero-one law, Ann. Probab. 22 (1994), 1576--1587.
 \bibitem{WWW14} A.~Wan, J.~Wright, C.~Wu, Decision trees, protocols, and the Fourier entropy-influence conjecture,
 ITCS 2014, arXiv:1312.3003.
 \end{thebibliography}
