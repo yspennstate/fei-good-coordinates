@@ -59,6 +59,12 @@ Classes and negative results (Sections 4 and 5)
 * `code/check_section5.py` the majority bound (3) in exact fractions, the Laplacian identity and the remark on
   x1 AND (x2 OR x3).
 
+## Related papers
+
+* [The one-coordinate step in the Fourier entropy-influence conjecture](https://github.com/yspennstate/fourier-entropy-influence-one-coordinate)
+* [A variance form of Han's bound on the Fourier entropy](https://github.com/yspennstate/fei-variance-han-bound)
+* [Four equivalent forms of the Fourier entropy-influence conjecture](https://github.com/yspennstate/fei-equivalent-forms)
+
 ## License
 
 The text is released under CC BY 4.0 and the code under the MIT license.
