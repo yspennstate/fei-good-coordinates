@@ -23,7 +23,7 @@ The paper studies G directly.
 * Every relevant leaf of a read-once AND/OR formula has E_i/Inf_i < pi/ln 2, and the constant is sharp.
 * The coordinate of largest influence can have unbounded ratio, even for monotone functions; in a monotone
   middle-layer construction all but k of the coordinates have ratio above any constant; and the power-weighted
-  averages sum_i Inf_i^a E_i <= C sum_i Inf_i^(a+1) fail for every a < 0 and every a > 1.
+  averages sum_i Inf_i^a E_i <= C sum_i Inf_i^(a+1) fail for every a != 0 (a = 0 is the conjecture itself).
 
 ## Code
 
@@ -52,6 +52,10 @@ Classes and negative results (Sections 4 and 5)
 * `code/check_hidden.py` Proposition 5.1, k = 3, ..., 17.
 * `code/check_middle_layer.py` Proposition 5.2, by brute force at k = 3, 5 and by the formula up to k = 17,
   including the base coordinates.
+* `code/wa_tribes.py` the power-weight proposition for a > 0: E_x and Inf_x of the tribes substitution against
+  full truth tables (k = 3, 19 variables), and the lower bound on the quotient for k = 3, ..., 15;
+  `code/wa_tribes2.py` the leaf influence with the normalisation 4p(1-p) (the first block of the output uses the
+  unnormalised value) and tribes widths up to 512. Output in `code/wa_tribes_out.txt`.
 * `code/check_section5.py` the majority bound (3) in exact fractions, the Laplacian identity and the remark on
   x1 AND (x2 OR x3).
 
