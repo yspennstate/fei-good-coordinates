@@ -6,7 +6,7 @@ This repository contains a paper on the Fourier entropy-influence (FEI) conjectu
 with the scripts behind every numerical value in it.
 
 Paper: [main.pdf](main.pdf) (source [main.tex](main.tex)).
-Zenodo: [doi:10.5281/zenodo.24139197](https://doi.org/10.5281/zenodo.24139197).
+Zenodo: [doi:10.5281/zenodo.24139705](https://doi.org/10.5281/zenodo.24139705).
 
 ## Summary
 
