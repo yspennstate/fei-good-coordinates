@@ -48,7 +48,7 @@ that $H(f)\le C\sum_i\Inf_i(f)$ for a universal constant $C$; let $C^\ast$ be th
 if there is none. The conjecture is known for several classes~\cite{OWZ,CKLS,KMS,WWW14,Pot26} and with a
 $\log$-type loss in general~\cite{Han,KMS}; Kelman, Kindler, Lifshitz, Minzer and Safra~\cite{KKLMS} prove a weaker
 form, that the spectrum of a Boolean function of constant variance is concentrated on $2^{O(\mathrm I(f)\log\mathrm
-I(f))}$ characters. The largest known lower bound is $C^\ast\ge 6.4548$~\cite{Hod}.
+I(f))}$ characters. The largest known lower bound is $C^\ast>6.5218$, from an explicit balanced monotone function on $18$ variables~\cite{Num26} through the amplification $C^\ast\ge H(g)/(\mathrm I(g)-1)$ of O'Donnell and Tan~\cite{OT13}; it improves the bounds $6.278$~\cite{OT13}, $6.4548$~\cite{Hod}, $6.4901$ and $6.5143$~\cite{MI26a,MI26b} (the records are collected in~\cite{TaoC}).
 
 Gonz\'alez, MacManus and Pereyra~\cite{GMP} reduce the conjecture to a statement about one coordinate: it is enough
 that every Boolean function has a coordinate $i$ at which the entropy drop
@@ -80,7 +80,7 @@ mixed words of six gate types give
 \[
 \G\ge\G_{\mathrm{mon}}\ge 4.5064284654452331779\ldots
 \]
-This is below the bound $C^\ast\ge 6.4548$, as it must be: towers are built to make one coordinate's ratio large,
+This is below the bound $C^\ast>6.5218$, as it must be: towers are built to make one coordinate's ratio large,
 and the spectral entropy of these functions is far from extremal. The point of the bound is the other one: any
 proof of FEI through a good coordinate must allow ratio at least $4.506$ already for monotone functions.
 
@@ -605,6 +605,9 @@ Fourier-entropy conjecture?, Geom. Funct. Anal. 30 (2020), 1097--1138.
 October 2026, \url{https://github.com/yspennstate/math-brain-public/tree/main/papers/math-brain-2026-10-24}.
 \bibitem{MathBrainRepo} Y.~Shmalo, \emph{Math Brain: public snapshot, code and tests}, 2026,
 \url{https://github.com/yspennstate/math-brain-public}.
+\bibitem{MI26a} Mosaic Intelligence, A certified lower bound $C_{71}\ge 6.4901128435233943$ for the Fourier entropy-influence constant, Zenodo, 2026, doi:10.5281/zenodo.20794146.
+\bibitem{MI26b} Mosaic Intelligence, A certified $n=17$ lower bound for the Fourier entropy-influence constant, Zenodo, 2026, doi:10.5281/zenodo.21113935.
+\bibitem{Num26} Numaro, Improved lower bound $C_{71}>6.521845710923046575$ for the Fourier entropy-influence constant ($n=18$ explicit construction), certificate archive, Zenodo, 2026, doi:10.5281/zenodo.21497769.
 \bibitem{ODo} R.~O'Donnell, \emph{Analysis of Boolean Functions}, Cambridge University Press, 2014.
 \bibitem{OT13} R.~O'Donnell, L.-Y.~Tan, A composition theorem for the Fourier entropy-influence conjecture,
 ICALP 2013, Lecture Notes in Comput. Sci. 7965, 780--791, doi:10.1007/978-3-642-39206-1\_66; arXiv:1304.1347.
@@ -617,6 +620,7 @@ arXiv:2609.21563, 2026.
 \bibitem{Shm2} Y.~Shmalo, The one-coordinate step in the Fourier entropy-influence conjecture,
 \url{https://github.com/yspennstate/fourier-entropy-influence-one-coordinate}, 2026.
 \bibitem{Tal} M.~Talagrand, On Russo's approximate zero-one law, Ann. Probab. 22 (1994), 1576--1587.
+\bibitem{TaoC} T.~Tao et al., Optimization constants in mathematics, constant $C_{71}$, \url{https://github.com/teorth/optimizationproblems}, 2026.
 \bibitem{WWW14} A.~Wan, J.~Wright, C.~Wu, Decision trees, protocols, and the Fourier entropy-influence conjecture,
 ITCS 2014, arXiv:1312.3003.
 \end{thebibliography}
