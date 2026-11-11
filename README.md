@@ -57,6 +57,9 @@ Classes and negative results (Sections 4 and 5)
   full truth tables (k = 3, 19 variables), and the lower bound on the quotient for k = 3, ..., 15;
   `code/wa_tribes2.py` the leaf influence with the normalisation 4p(1-p) (the first block of the output uses the
   unnormalised value) and tribes widths up to 512. Output in `code/wa_tribes_out.txt`.
+* `code/check_slow_weights.py` the majority lift for slowly varying weights: exact scaling of E and Inf on
+  Maj_3 of x1x2 v x2x3 v x1x4 (12 variables) and the weighted quotient for growing b. Output in
+  `code/check_slow_weights_out.txt`.
 * `code/check_section5.py` the majority bound (3) in exact fractions, the Laplacian identity and the remark on
   x1 AND (x2 OR x3).
 
