@@ -47,11 +47,12 @@ Let $f:\{-1,1\}^n\to\{-1,1\}$ have Fourier expansion $f=\sum_S\hat f(S)\chi_S$, 
 $\Pr[U=S]=\hat f(S)^2$. The spectral entropy of $f$ is $H(f)=H(U)$ and the influence of $i$ is
 $\Inf_i(f)=\Pr[i\in U]$. The Fourier entropy-influence (FEI) conjecture of Friedgut and Kalai~\cite{FK} asserts
 that $H(f)\le C\sum_i\Inf_i(f)$ for a universal constant $C$; let $C^\ast$ be the least such constant, $C^\ast=\infty$
-if there is none. The conjecture is known for several classes~\cite{OWZ,CKLS,KMS,WWW14,Pot26}, among them the linear threshold
-functions~\cite{ShmLTF}, and with a
-$\log$-type loss in general~\cite{Han,KMS}; Kelman, Kindler, Lifshitz, Minzer and Safra~\cite{KKLMS} prove a weaker
-form, that the spectrum of a Boolean function of constant variance is concentrated on $2^{O(\mathrm I(f)\log\mathrm
-I(f))}$ characters. The largest known lower bound is $C^\ast>6.5218$, from an explicit balanced monotone function on $18$ variables~\cite{Num26} through the amplification $C^\ast\ge H(g)/(\mathrm I(g)-1)$ of O'Donnell and Tan~\cite{OT13}; it improves the bounds $6.278$~\cite{OT13}, $6.4548$~\cite{Hod}, $6.4901$ and $6.5143$~\cite{MI26a,MI26b} (the records are collected in~\cite{TaoC}).
+if there is none. The conjecture is known for symmetric functions~\cite{OWZ} and for read-once formulas~\cite{OT13,CKLS}. It is
+also known for read-$k$ decision trees with $k$ fixed~\cite{WWW14}, for plateaued functions~\cite{Pot26} and for
+linear threshold functions~\cite{ShmLTF}. In general it holds with a $\log$-type loss~\cite{Han,KMS}. Kelman,
+Kindler, Lifshitz, Minzer and Safra~\cite{KKLMS} prove a weaker form, that the spectrum of a Boolean function of constant variance is concentrated on $2^{O(\mathrm I(f)\log\mathrm
+I(f))}$ characters. The largest known lower bound is $C^\ast>6.5218$, from an explicit balanced monotone function on $18$ variables~\cite{Num26} through the amplification $C^\ast\ge H(g)/(\mathrm I(g)-1)$ of O'Donnell and Tan~\cite{OT13}. Earlier bounds are $6.278$~\cite{OT13} and $6.4548$~\cite{Hod}, followed by
+$6.4901$ and $6.5143$~\cite{MI26a,MI26b}. The records are collected in~\cite{TaoC}.
 
 Gonz\'alez, MacManus and Pereyra~\cite{GMP} reduce the conjecture to a statement about one coordinate: it is enough
 that every Boolean function has a coordinate $i$ at which the entropy drop
