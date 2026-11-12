@@ -114,8 +114,8 @@ g(y)=\sum_{T\subseteq[k]}\hat g_\mu(T)\prod_{l\in T}\phi_\mu(y_l),\qquad
 In particular $\hat g_\mu(\emptyset)=\E[g(y)]$.
 
 \subsection{The spectral sample of a composition}
-Let $h:\{-1,1\}^m\to\{-1,1\}$ have mean $\mu=\hat h(\emptyset)\in(-1,1)$, and let
-$f(x^1,\dots,x^k)=g(h(x^1),\dots,h(x^k))$ on $k$ disjoint blocks of $m$ variables. Since
+Let $h:\{-1,1\}^{n_h}\to\{-1,1\}$ have mean $\mu=\hat h(\emptyset)\in(-1,1)$, and let
+$f(x^1,\dots,x^k)=g(h(x^1),\dots,h(x^k))$ on $k$ disjoint blocks of $n_h$ variables. Since
 $\phi_\mu(h)=\sigma^{-1}\sum_{A\ne\emptyset}\hat h(A)\chi_A$, expanding $g$ gives
 \[
 \hat f\Bigl(\bigcup_{l\in T}A_l\Bigr)=\hat g_\mu(T)\prod_{l\in T}\frac{\hat h(A_l)}{\sigma}
@@ -303,16 +303,16 @@ assumed.
 \end{theorem}
 
 \begin{proof}
-Since $f$ is not constant, some term is satisfiable and nonempty; let its literals be $\ell_1,\dots,\ell_k$, $k\le w$,
-on coordinates $j_1,\dots,j_k$. From every input $x$ with $f(x)$ false, set $\ell_1,\dots,\ell_k$ true one at a time.
+Since $f$ is not constant, some term is satisfiable and nonempty; let its literals be $\ell_1,\dots,\ell_{w'}$, $w'\le w$,
+on coordinates $j_1,\dots,j_{w'}$. From every input $x$ with $f(x)$ false, set $\ell_1,\dots,\ell_{w'}$ true one at a time.
 The last input satisfies the term, so some step crosses an edge of the cube along which $f$ changes. An edge in
 direction $j_t$ is reached at step $t$ from at most $2^{t-1}$ starting inputs, those that differ from its lower end
 only in $j_1,\dots,j_{t-1}$. The number of such edges in direction $j$ is $2^{n-1}\Inf_j(f)$. Hence
 \[
-\Pr[f\text{ false}]\le\frac12\sum_{t=1}^k2^{t-1}\Inf_{j_t}(f)\le\frac{2^k-1}{2}\max_t\Inf_{j_t}(f).
+\Pr[f\text{ false}]\le\frac12\sum_{t=1}^{w'}2^{t-1}\Inf_{j_t}(f)\le\frac{2^{w'}-1}{2}\max_t\Inf_{j_t}(f).
 \]
 Take $i$ the maximiser. With $V=\mathrm{Var}(f)=4\Pr[f\text{ false}]\Pr[f\text{ true}]$ this gives
-$V/\Inf_i(f)\le2(2^k-1)$, and Lemma~\ref{lem:var} gives the bound. For a CNF apply this to $\neg f$, which has the
+$V/\Inf_i(f)\le2(2^{w'}-1)$, and Lemma~\ref{lem:var} gives the bound. For a CNF apply this to $\neg f$, which has the
 same $E_i$ and $\Inf_i$.
 \end{proof}
 
@@ -366,7 +366,7 @@ $P_{r-1}-P_r$ and none is nonempty with probability $\delta$. Now apply~\eqref{e
 
 \begin{proof}[Proof of Theorem~\ref{thm:readonce}]
 Let $a_l\le b_l$ be the probabilities that $f_l$ is true when $x_i$ is false, respectively true, and
-$d_l=b_l-a_l=P_l$. Put $\alpha=a/d$, $\beta=(1-b)/d$, so $s=1+\alpha+\beta=1/d$. An AND gate keeps $\alpha$ and raises
+$d_l=b_l-a_l=P_l$. Put $\alpha=a/d$, $\beta=(1-b)/d$, so $\gamma=1+\alpha+\beta=1/d$. An AND gate keeps $\alpha$ and raises
 $\beta$; an OR gate keeps $\beta$ and raises $\alpha$. In terms of the values $(\alpha,\beta)$ before gate $r$,
 $\sum_{l<r}c_l(1-p_l)/P_l=\beta-\alpha$ (with $c=-1$ for true), so $|R_r|=1+2\alpha$ at an AND and $|R_r|=1+2\beta$ at an
 OR, and $|R_\infty|=|\beta-\alpha|$ at the end. With $\psi(t)=\Phi(2t+1)$, the charge of an AND step is
@@ -380,17 +380,17 @@ and symmetrically at an OR. The function $\Phi$ is increasing on $[0,\infty)$, a
 since $\ln(1+x)<2x/(1+x)$ for $0<x\le1$. So $\psi$ is increasing and strictly concave on $[0,\infty)$. For $\alpha\ge\beta$ let
 \[
 \Omega(\alpha)=\int_\alpha^\infty\frac{2\psi(t)}{(1+2t)^2}\,dt,\qquad
-\Theta(\alpha,\beta)=\psi(\alpha)\Bigl[\frac1s-\frac1{1+2\alpha}\Bigr]+\Omega(\alpha),
+\Theta(\alpha,\beta)=\psi(\alpha)\Bigl[\frac1\gamma-\frac1{1+2\alpha}\Bigr]+\Omega(\alpha),
 \]
-and $\Theta(\alpha,\beta)=\Theta(\beta,\alpha)$ for $\alpha<\beta$; $\Theta$ is continuous. For $\alpha\ge\beta$, $-\Theta_\beta=\psi(\alpha)/s^2$, and
+and $\Theta(\alpha,\beta)=\Theta(\beta,\alpha)$ for $\alpha<\beta$; $\Theta$ is continuous. For $\alpha\ge\beta$, $-\Theta_\beta=\psi(\alpha)/\gamma^2$, and
 \[
--\Theta_\alpha-\frac{\psi(\beta)}{s^2}=\frac{\psi(\alpha)-\psi(\beta)}{s^2}-\frac{\psi'(\alpha)(\alpha-\beta)}{s(1+2\alpha)}
-\ge \psi'(\alpha)(\alpha-\beta)\Bigl[\frac1{s^2}-\frac1{s(1+2\alpha)}\Bigr]\ge0
+-\Theta_\alpha-\frac{\psi(\beta)}{\gamma^2}=\frac{\psi(\alpha)-\psi(\beta)}{\gamma^2}-\frac{\psi'(\alpha)(\alpha-\beta)}{\gamma(1+2\alpha)}
+\ge \psi'(\alpha)(\alpha-\beta)\Bigl[\frac1{\gamma^2}-\frac1{\gamma(1+2\alpha)}\Bigr]\ge0
 \]
-by concavity and $s\le1+2\alpha$. Hence along every step the charge is at most the decrease of $\Theta$, on either side of
+by concavity and $\gamma\le1+2\alpha$. Hence along every step the charge is at most the decrease of $\Theta$, on either side of
 the diagonal. At the end, $\Omega(\alpha)>\psi(\alpha)/(1+2\alpha)$ because $\psi$ is increasing, so for $\alpha\ge\beta$
 \[
-\Theta(\alpha,\beta)>\frac{\psi(\alpha)}{s}\ge\frac{\Phi(\alpha-\beta)}{s}=\delta\,\Phi(R_\infty).
+\Theta(\alpha,\beta)>\frac{\psi(\alpha)}{\gamma}\ge\frac{\Phi(\alpha-\beta)}{\gamma}=\delta\,\Phi(R_\infty).
 \]
 Lemma~\ref{lem:path} and the start $(\alpha,\beta)=(0,0)$ give $E_i/\delta<\Theta(0,0)=\Omega(0)=\int_1^\infty\Phi(u)u^{-2}\,du$.
 Since $\Phi'(u)=2u\ln(1+u^{-2})/\ln2$ and $\Phi(1)=2$, integration by parts and the antiderivative
@@ -400,14 +400,14 @@ $u\ln(1+u^{-2})+2\arctan u$ give
 =\frac{\pi}{\ln2}.
 \]
 
-For sharpness take $q=1-2^{-m}$ and $K=m2^m$ gates alternating AND, OR, AND, \dots; at an AND the sibling is an OR of
-$m$ fresh variables and at an OR an AND of $m$ fresh variables, so every $p_l=q$. Then $\alpha$ and $\beta$ differ by
-$O(1-q)$ relative to $s$, every step multiplies $s$ by $1/q$, and $s$ runs from $1$ to $q^{-K}\approx e^m$. The
+For sharpness take $q=1-2^{-\nu}$ and $K=\nu2^\nu$ gates alternating AND, OR, AND, \dots; at an AND the sibling is an OR of
+$\nu$ fresh variables and at an OR an AND of $\nu$ fresh variables, so every $p_l=q$. Then $\alpha$ and $\beta$ differ by
+$O(1-q)$ relative to $\gamma$, every step multiplies $\gamma$ by $1/q$, and $\gamma$ runs from $1$ to $q^{-K}\approx e^\nu$. The
 charges are Riemann sums of $\int_1^{q^{-K}}\Phi(u)u^{-2}\,du$ with mesh tending to zero, and the terminal term is
-nonnegative, so the ratio tends to $\pi/\ln2$ as $m\to\infty$. These formulas have $1+m^22^m$ variables.
+nonnegative, so the ratio tends to $\pi/\ln2$ as $\nu\to\infty$. These formulas have $1+\nu^22^\nu$ variables.
 \end{proof}
 
-The values for $m=2,4,\dots,14$ are $3.633$, $4.326$, $4.492$, $4.525$, $4.531$, $4.5322$, $4.5323$, and the
+The values for $\nu=2,4,\dots,14$ are $3.633$, $4.326$, $4.492$, $4.525$, $4.531$, $4.5322$, $4.5323$, and the
 identity of Lemma~\ref{lem:path} agrees with brute-force transforms of random guarded paths to $3\times10^{-15}$.
 Read-once formulas are known to satisfy FEI~\cite{OWZ,CKLS,OT13}, and for the whole one-coordinate step
 $H(f)-\frac12H(f_{i\to1})-\frac12H(f_{i\to-1})$ every leaf of a read-once formula has ratio below $5+\ln4$ in
@@ -419,7 +419,7 @@ with the exact constant.
 
 All three constructions below use one device, a single point added to a monotone function, which is also the source of
 the example in~\cite[Proposition~5.1]{GMP}. Let $k=2m+1$, write $\mathrm{Maj}$ for majority on $k$ variables with value
-$-1$ when true, and let $\hat{\mathrm{Maj}}$ denote its Fourier coefficients. For odd $|T|=s=2j+1$,
+$-1$ when true, and let $\hat{\mathrm{Maj}}$ denote its Fourier coefficients. For odd $|T|=2j+1$,
 \[
 |\hat{\mathrm{Maj}}(T)|=\frac{\binom{2m}{m}}{4^m}\cdot\frac{\binom mj}{\binom{2m}{2j}}
 \]
@@ -465,7 +465,7 @@ a monotone function of $k+\binom km$ variables. Each of the $\binom km$ coordina
 \[
 \frac{E_{z_A}(F)}{\Inf_{z_A}(F)}=2^{-k}\sum_{T\subseteq[k]}\Phi\bigl(2^k\hat \rho(T)\bigr)\ge\frac k2-O(\log k),
 \]
-where $\rho=\mathrm{Maj}-\mathbf 1[|y|=m]$ and $\hat \rho(T)=\bigl(1-\tfrac{s}{k+1}\bigr)\hat{\mathrm{Maj}}(T)$ for odd $|T|=s$.
+where $\rho=\mathrm{Maj}-\mathbf 1[|y|=m]$ and $\hat \rho(T)=\bigl(1-\tfrac{|T|}{k+1}\bigr)\hat{\mathrm{Maj}}(T)$ for odd $|T|$.
 \end{proposition}
 
 \begin{proof}
@@ -474,7 +474,7 @@ with no term containing two hidden variables, and for $z_A$ one has $q_T=4^{-k}$
 $T\subseteq[k]$, while frequencies containing another $z_B$ have $q=0$. This gives the identity. For the coefficients,
 let $\mathcal L$ be the Laplacian, $\mathcal L\chi_T=|T|\chi_T$. Majority changes only between the layers $m$ and $m+1$,
 across $m+1$ edges from each point, so $\mathcal L\,\mathrm{Maj}=(m+1)(J(y)-J(\bar y))$ with $J=\mathbf 1[|y|=m]$. At odd
-$T$ this reads $s\,\hat{\mathrm{Maj}}(T)=(k+1)\hat J(T)$. The lower bound follows from~\eqref{eq:majlow}, $1-s/(k+1)\ge1/(k+1)$
+$T$ this reads $|T|\,\hat{\mathrm{Maj}}(T)=(k+1)\hat J(T)$. The lower bound follows from~\eqref{eq:majlow}, $1-|T|/(k+1)\ge1/(k+1)$
 and $\Phi(u)\ge\log_2(1+u^2)$, as before.
 \end{proof}
 
@@ -589,7 +589,7 @@ The paper is part of the Math Brain project, whose public repository is
 \appendix
 \section{Notation}\label{app:notation}
 
-Symbols are listed in the order in which they first appear, and the last column gives that place. The letters $k$ and $s$, and the gate names of Section~\ref{sec:towers}, are reused with different meanings in
+Symbols are listed in the order in which they first appear, and the last column gives that place. The letter $k$ and the gate names of Section~\ref{sec:towers}, are reused with different meanings in
 different sections; the meaning column says where each meaning holds.
 
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.19\textwidth}>{\raggedright\arraybackslash}p{0.54\textwidth}>{\raggedright\arraybackslash}p{0.2\textwidth}@{}}
@@ -609,7 +609,7 @@ $\G(f)$, $\G$ & $\min_{i:\Inf_i(f)>0}E_i(f)/\Inf_i(f)$, and its supremum over al
 $\G_{\mathrm{mon}}$ & the supremum of $\G(f)$ over monotone $f$ & Section~\ref{sec:intro} \\
 $\mu$, $\sigma$, $\phi_\mu$ & a mean in $(-1,1)$, $\sigma=\sqrt{1-\mu^2}$, and $\phi_\mu(y)=(y-\mu)/\sigma$ & Section~\ref{sec:comp} \\
 $\hat g_\mu(T)$ & the $\mu$-biased Fourier coefficient of a gate $g$ at $T\subseteq[k]$; used in Sections~\ref{sec:comp} and~\ref{sec:towers} & Section~\ref{sec:comp} \\
-$g$, $h$, $k$ & a gate on $k$ inputs and the inner function, in the composition $f=g(h,\dots,h)$; these meanings hold in Sections~\ref{sec:intro} to~\ref{sec:towers} & Section~\ref{sec:intro} \\
+$g$, $h$, $k$, $n_h$ & a gate on $k$ inputs and the inner function, of $n_h$ variables, in the composition $f=g(h,\dots,h)$; these meanings hold in Sections~\ref{sec:intro} to~\ref{sec:towers} & Section~\ref{sec:intro} \\
 $A_l$, $B$ & a nonempty subset of block $l$; and $U\setminus\{i\}$ in~\eqref{eq:Esplit} & Section~\ref{sec:comp} \\
 $h_2$ & the binary entropy $h_2(p)=-p\log_2p-(1-p)\log_2(1-p)$ & Section~\ref{sec:comp} \\
 $\Lambda(a,b)$ & the unnormalised two-point entropy $(a+b)\,h_2\bigl(b/(a+b)\bigr)$, with $\Lambda(0,0)=0$ & Section~\ref{sec:comp} \\
@@ -629,11 +629,12 @@ $\Phi$ & $\Phi(u)=\Lambda(u^2,1)$; used in Sections~\ref{sec:classes} and~\ref{s
 $L$ & the number of gates on the path from a leaf to the root & Theorem~\ref{thm:readonce} \\
 $Z_l$, $p_l$, $c_l$, $P_l$ & along the path from a leaf to the root: the event that gate $l$ passes the path child, its probability, the output when blocked, and $p_1\cdots p_l$ & Theorem~\ref{thm:readonce} \\
 $R_r$, $R_\infty$ & the sums defined in Lemma~\ref{lem:path} & Lemma~\ref{lem:path} \\
-$\alpha$, $\beta$, $s$ & $a_l/d_l$, $(1-b_l)/d_l$ and $1+\alpha+\beta$ in the proof of Theorem~\ref{thm:readonce} & Section~\ref{sec:classes} \\
+$\alpha$, $\beta$, $\gamma$ & $a_l/d_l$, $(1-b_l)/d_l$ and $1+\alpha+\beta$ in the proof of Theorem~\ref{thm:readonce} & Section~\ref{sec:classes} \\
 $\psi$, $\Omega$, $\Theta$ & $\psi(t)=\Phi(2t+1)$ and the potential functions of the proof of Theorem~\ref{thm:readonce} & Section~\ref{sec:classes} \\
+$\nu$, $q$, $K$ & $q=1-2^{-\nu}$ and the number $K=\nu2^\nu$ of gates in the sharpness construction for Theorem~\ref{thm:readonce} & Section~\ref{sec:classes} \\
 $k$, $m$ & $k=2m+1$, the number of variables of $\mathrm{Maj}$ & Section~\ref{sec:neg} \\
 $\mathrm{Maj}$, $\mathrm{Maj}_b$ & majority on $k$ (respectively $b$) variables, value $-1$ when true & Section~\ref{sec:neg} \\
-$s$ & the size $|T|$ of an odd set $T\subseteq[k]$; in the proof for $a>0$, the number of terms of $\mathrm{Tr}(w,s)$ & Section~\ref{sec:neg} \\
+$s$ & the number of terms of $\mathrm{Tr}(w,s)$ & Section~\ref{sec:towers} \\
 $F$, $A$ & the function built in each construction, and an $m$-subset of $[k]$ & Section~\ref{sec:neg} \\
 $J$ & $\mathbf 1[|y|=m]$ in the proof of Proposition~\ref{prop:middle} & Section~\ref{sec:neg} \\
 $\rho$, $\hat\rho(T)$ & $\mathrm{Maj}-\mathbf 1[|y|=m]$ in Proposition~\ref{prop:middle} and its Fourier coefficients & Section~\ref{sec:neg} \\
