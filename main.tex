@@ -194,7 +194,7 @@ output $-1$ when the gate is true. The gates used are:
 \begin{itemize}
 \item $M$, the perfect-matching function of $K_{3,3}$: $z$ indexes the nine edges and $M(z)=1$ when the chosen edges
 contain a perfect matching; $D(z)=1-M(\mathbf 1-z)$ is its dual;
-\item $P$, the perfect-matching function of $K_{4,4}$ on sixteen edges, and its dual $P^\ast$;
+\item $N$, the perfect-matching function of $K_{4,4}$ on sixteen edges, and its dual $N^\ast$;
 \item the tribes functions $T(w,s)$, the OR of $s$ disjoint ANDs of $w$ variables each, and their duals
 $T(w,s)^\ast$; we also write $Q_2=T(2,2)^\ast$, and $R^\ast$ for the dual of the function on the six edges of $K_4$ that is
 true when two opposite edges are both present (a copy of $T(2,3)$).
@@ -216,6 +216,7 @@ $\G(f)$ equal to the value shown, to the number of digits shown. In particular
 
 \begin{table}[tbp]
 \centering
+\setlength{\tabcolsep}{4pt}
 \begin{tabular}{lrl}
 \toprule
 word (bottom to top) & variables & $\G(f)$\\\midrule
@@ -223,9 +224,9 @@ $M\,D\,D\,D\,D\,T(2,5)^\ast$ & $5.9\times10^{5}$ & $4.50585006207690030206437435
 $M\,D\,D\,M\,M\,D\,D$ & $4.8\times10^{6}$ & $4.50504996749762792695710133417$\\
 $M\,D\,D\,D\,D\,D\,M\,M$ & $4.3\times10^{7}$ & $4.50637987946771061063535681398$\\
 $D\,M^{12}$ & $2.5\times10^{12}$ & $4.50642830552543541108624856879$\\
-$M\,D^4\,M\,P\,P\,P\,Q_2\,R^\ast\,T(4,3)^\ast\,T(2,6)\,T(3,5)$ & $1.1\times10^{14}$ & $4.50640064551556843550717367045$\\
-$D\,M^{8}\,P^\ast\,M\,M\,T(3,5)$ & $7.5\times10^{12}$ & $4.50642846293912877531310941280$\\
-$M\,D^{8}\,P\,D\,D\,T(4,3)^\ast\,T(3,5)\,T(3,5)$ & $1.4\times10^{15}$ & $4.50642846544523317790928639245$\\
+$M\,D^4\,M\,N\,N\,N\,Q_2\,R^\ast\,T(4,3)^\ast\,T(2,6)\,T(3,5)$ & $1.1\times10^{14}$ & $4.50640064551556843550717367045$\\
+$D\,M^{8}\,N^\ast\,M\,M\,T(3,5)$ & $7.5\times10^{12}$ & $4.50642846293912877531310941280$\\
+$M\,D^{8}\,N\,D\,D\,T(4,3)^\ast\,T(3,5)\,T(3,5)$ & $1.4\times10^{15}$ & $4.50642846544523317790928639245$\\
 \bottomrule
 \end{tabular}
 \caption{Lower bounds for $\G_{\mathrm{mon}}$ from towers. Values to 30 digits are computed with 40-digit arithmetic.}
@@ -377,20 +378,20 @@ and symmetrically at an OR. The function $\Phi$ is increasing on $[0,\infty)$, a
 \]
 since $\ln(1+x)<2x/(1+x)$ for $0<x\le1$. So $\psi$ is increasing and strictly concave on $[0,\infty)$. For $\alpha\ge\beta$ let
 \[
-W(\alpha)=\int_\alpha^\infty\frac{2\psi(t)}{(1+2t)^2}\,dt,\qquad
-V(\alpha,\beta)=\psi(\alpha)\Bigl[\frac1s-\frac1{1+2\alpha}\Bigr]+W(\alpha),
+\Omega(\alpha)=\int_\alpha^\infty\frac{2\psi(t)}{(1+2t)^2}\,dt,\qquad
+\Theta(\alpha,\beta)=\psi(\alpha)\Bigl[\frac1s-\frac1{1+2\alpha}\Bigr]+\Omega(\alpha),
 \]
-and $V(\alpha,\beta)=V(\beta,\alpha)$ for $\alpha<\beta$; $V$ is continuous. For $\alpha\ge\beta$, $-V_\beta=\psi(\alpha)/s^2$, and
+and $\Theta(\alpha,\beta)=\Theta(\beta,\alpha)$ for $\alpha<\beta$; $\Theta$ is continuous. For $\alpha\ge\beta$, $-\Theta_\beta=\psi(\alpha)/s^2$, and
 \[
--V_\alpha-\frac{\psi(\beta)}{s^2}=\frac{\psi(\alpha)-\psi(\beta)}{s^2}-\frac{\psi'(\alpha)(\alpha-\beta)}{s(1+2\alpha)}
+-\Theta_\alpha-\frac{\psi(\beta)}{s^2}=\frac{\psi(\alpha)-\psi(\beta)}{s^2}-\frac{\psi'(\alpha)(\alpha-\beta)}{s(1+2\alpha)}
 \ge \psi'(\alpha)(\alpha-\beta)\Bigl[\frac1{s^2}-\frac1{s(1+2\alpha)}\Bigr]\ge0
 \]
-by concavity and $s\le1+2\alpha$. Hence along every step the charge is at most the decrease of $V$, on either side of
-the diagonal. At the end, $W(\alpha)>\psi(\alpha)/(1+2\alpha)$ because $\psi$ is increasing, so for $\alpha\ge\beta$
+by concavity and $s\le1+2\alpha$. Hence along every step the charge is at most the decrease of $\Theta$, on either side of
+the diagonal. At the end, $\Omega(\alpha)>\psi(\alpha)/(1+2\alpha)$ because $\psi$ is increasing, so for $\alpha\ge\beta$
 \[
-V(\alpha,\beta)>\frac{\psi(\alpha)}{s}\ge\frac{\Phi(\alpha-\beta)}{s}=\delta\,\Phi(R_\infty).
+\Theta(\alpha,\beta)>\frac{\psi(\alpha)}{s}\ge\frac{\Phi(\alpha-\beta)}{s}=\delta\,\Phi(R_\infty).
 \]
-Lemma~\ref{lem:path} and the start $(\alpha,\beta)=(0,0)$ give $E_i/\delta<V(0,0)=W(0)=\int_1^\infty\Phi(u)u^{-2}\,du$.
+Lemma~\ref{lem:path} and the start $(\alpha,\beta)=(0,0)$ give $E_i/\delta<\Theta(0,0)=\Omega(0)=\int_1^\infty\Phi(u)u^{-2}\,du$.
 Since $\Phi'(u)=2u\ln(1+u^{-2})/\ln2$ and $\Phi(1)=2$, integration by parts and the antiderivative
 $u\ln(1+u^{-2})+2\arctan u$ give
 \[
@@ -461,18 +462,18 @@ F(y,z)=[\,|y|\ge m+1\,]\ \vee\bigvee_{|A|=m}\Bigl(z_A\wedge\bigwedge_{j\in A}y_j
 \]
 a monotone function of $k+\binom km$ variables. Each of the $\binom km$ coordinates $z_A$ has influence $2^{-k}$ and
 \[
-\frac{E_{z_A}(F)}{\Inf_{z_A}(F)}=2^{-k}\sum_{T\subseteq[k]}\Phi\bigl(2^k\hat a(T)\bigr)\ge\frac k2-O(\log k),
+\frac{E_{z_A}(F)}{\Inf_{z_A}(F)}=2^{-k}\sum_{T\subseteq[k]}\Phi\bigl(2^k\hat \rho(T)\bigr)\ge\frac k2-O(\log k),
 \]
-where $a=\mathrm{Maj}-\mathbf 1[|y|=m]$ and $\hat a(T)=\bigl(1-\tfrac{s}{k+1}\bigr)\hat{\mathrm{Maj}}(T)$ for odd $|T|=s$.
+where $\rho=\mathrm{Maj}-\mathbf 1[|y|=m]$ and $\hat \rho(T)=\bigl(1-\tfrac{s}{k+1}\bigr)\hat{\mathrm{Maj}}(T)$ for odd $|T|=s$.
 \end{proposition}
 
 \begin{proof}
-On the layer $|y|=m$ the output is $z_y$, below it false and above it true. So $F=a(y)\pm\sum_A z_A\mathbf 1[y=1_A]$
-with no term containing two hidden variables, and for $z_A$ one has $q_T=4^{-k}$ and $p_T=\hat a(T)^2$ on
+On the layer $|y|=m$ the output is $z_y$, below it false and above it true. So $F=\rho(y)\pm\sum_A z_A\mathbf 1[y=1_A]$
+with no term containing two hidden variables, and for $z_A$ one has $q_T=4^{-k}$ and $p_T=\hat \rho(T)^2$ on
 $T\subseteq[k]$, while frequencies containing another $z_B$ have $q=0$. This gives the identity. For the coefficients,
 let $\mathcal L$ be the Laplacian, $\mathcal L\chi_T=|T|\chi_T$. Majority changes only between the layers $m$ and $m+1$,
-across $m+1$ edges from each point, so $\mathcal L\,\mathrm{Maj}=(m+1)(L(y)-L(\bar y))$ with $L=\mathbf 1[|y|=m]$. At odd
-$T$ this reads $s\,\hat{\mathrm{Maj}}(T)=(k+1)\hat L(T)$. The lower bound follows from~\eqref{eq:majlow}, $1-s/(k+1)\ge1/(k+1)$
+across $m+1$ edges from each point, so $\mathcal L\,\mathrm{Maj}=(m+1)(J(y)-J(\bar y))$ with $J=\mathbf 1[|y|=m]$. At odd
+$T$ this reads $s\,\hat{\mathrm{Maj}}(T)=(k+1)\hat J(T)$. The lower bound follows from~\eqref{eq:majlow}, $1-s/(k+1)\ge1/(k+1)$
 and $\Phi(u)\ge\log_2(1+u^2)$, as before.
 \end{proof}
 
@@ -526,23 +527,23 @@ least a constant times the variance.
 
 Weights that vary slowly give nothing easier. Let $g>0$ be slowly varying at $0$, that is $g(ct)/g(t)\to1$ as $t\to0$
 for every $c>0$~\cite{BGT}; this includes the constants and $\log(1/t)^{-b}$ for every $b$. If
-$\sum_ig(\Inf_i(f))E_i(f)\le C\sum_ig(\Inf_i(f))\Inf_i(f)$ for all monotone $f$, then $\sum_iE_i(\psi)\le C\,I(\psi)$
-for every balanced monotone $\psi$. To see this, let $b$ be odd and $h=\mathrm{Maj}_b(\psi(x^1),\dots,\psi(x^b))$ on
-disjoint blocks. Since $\hat\psi(\emptyset)=0$, $\hat h$ at a frequency with nonempty parts $S_j$, $j\in T$, is
-$\hat{\mathrm{Maj}_b}(T)\prod_{j\in T}\hat\psi(S_j)$. For a leaf $i$ of block $j$, the pairs $(S,S\cup\{i\})$ with
-$S\ne\emptyset$ in block $j$ keep $T$, and by homogeneity of $\Lambda$ they give $\tau_bE_i(\psi)$, where
+$\sum_ig(\Inf_i(f))E_i(f)\le C\sum_ig(\Inf_i(f))\Inf_i(f)$ for all monotone $f$, then $\sum_iE_i(\varphi)\le C\,I(\varphi)$
+for every balanced monotone $\varphi$. To see this, let $b$ be odd and $h=\mathrm{Maj}_b(\varphi(x^1),\dots,\varphi(x^b))$ on
+disjoint blocks. Since $\hat\varphi(\emptyset)=0$, $\hat h$ at a frequency with nonempty parts $S_j$, $j\in T$, is
+$\hat{\mathrm{Maj}_b}(T)\prod_{j\in T}\hat\varphi(S_j)$. For a leaf $i$ of block $j$, the pairs $(S,S\cup\{i\})$ with
+$S\ne\emptyset$ in block $j$ keep $T$, and by homogeneity of $\Lambda$ they give $\tau_bE_i(\varphi)$, where
 $\tau_b=\binom{b-1}{(b-1)/2}2^{1-b}$ is the influence of a coordinate of $\mathrm{Maj}_b$. The pair
 $(\emptyset,\{i\})$ changes $|T|$ by one, so one of its two coefficients vanishes, because $\mathrm{Maj}_b$ has
-weight only on odd sets. Hence $E_{(j,i)}(h)=\tau_bE_i(\psi)$ and $\Inf_{(j,i)}(h)=\tau_b\Inf_i(\psi)$, and
+weight only on odd sets. Hence $E_{(j,i)}(h)=\tau_bE_i(\varphi)$ and $\Inf_{(j,i)}(h)=\tau_b\Inf_i(\varphi)$, and
 \[
 \frac{\sum_vg(\Inf_v(h))E_v(h)}{\sum_vg(\Inf_v(h))\Inf_v(h)}
-=\frac{\sum_ig(\tau_b\Inf_i(\psi))E_i(\psi)}{\sum_ig(\tau_b\Inf_i(\psi))\Inf_i(\psi)}\longrightarrow\frac{\sum_iE_i(\psi)}{I(\psi)}
+=\frac{\sum_ig(\tau_b\Inf_i(\varphi))E_i(\varphi)}{\sum_ig(\tau_b\Inf_i(\varphi))\Inf_i(\varphi)}\longrightarrow\frac{\sum_iE_i(\varphi)}{I(\varphi)}
 \]
-as $b\to\infty$, since $g(\tau_b\Inf_i)/g(\tau_b)\to1$ for each of the finitely many $i$ with $\Inf_i(\psi)>0$; and $h$
-is monotone. The convergence is slow. For $\psi=x_1x_2\vee x_2x_3\vee x_1x_4$ and $g(t)=1/\ln(1/t)$ the weighted
-quotient is $1.1610$ for $\psi$, $1.2012$ at $b=3$, $1.2346$ at $b=101$ and $1.2533$ at $b=10^6+1$, against
-$\sum_iE_i(\psi)/I(\psi)=1.2683$. The argument needs $\hat\psi(\emptyset)=0$. For biased $\psi$ the pair
-$(\emptyset,\{i\})$ of $\psi$ is not carried into $h$, and $\mathrm{Maj}_b$ in the biased basis has weight on even sets,
+as $b\to\infty$, since $g(\tau_b\Inf_i)/g(\tau_b)\to1$ for each of the finitely many $i$ with $\Inf_i(\varphi)>0$; and $h$
+is monotone. The convergence is slow. For $\varphi=x_1x_2\vee x_2x_3\vee x_1x_4$ and $g(t)=1/\ln(1/t)$ the weighted
+quotient is $1.1610$ for $\varphi$, $1.2012$ at $b=3$, $1.2346$ at $b=101$ and $1.2533$ at $b=10^6+1$, against
+$\sum_iE_i(\varphi)/I(\varphi)=1.2683$. The argument needs $\hat\varphi(\emptyset)=0$. For biased $\varphi$ the pair
+$(\emptyset,\{i\})$ of $\varphi$ is not carried into $h$, and $\mathrm{Maj}_b$ in the biased basis has weight on even sets,
 so the two sides no longer scale together.
 
 \begin{remark}
@@ -614,7 +615,7 @@ $\Lambda(a,b)$ & the unnormalised two-point entropy $(a+b)\,h_2\bigl(b/(a+b)\big
 $(\mu,P,e,I)$ & the state of a leaf $i$ in $h$: mean of $h$, $\hat h(\{i\})^2$, the part $e(h)$ of $E_i(h)$ over nonempty $U\setminus\{i\}$, and $\Inf_i(h)$ & Section~\ref{sec:comp} \\
 $W_j$ & the $\mu$-biased influence $\sum_{T\ni j}\hat g_\mu(T)^2$ of input $j$ on $g$ & Theorem~\ref{thm:comp} \\
 $M$, $D$ & the perfect-matching function of $K_{3,3}$ on its nine edges, and its dual & Section~\ref{sec:towers} \\
-$P$, $P^\ast$ & the perfect-matching function of $K_{4,4}$, and its dual & Section~\ref{sec:towers} \\
+$N$, $N^\ast$ & the perfect-matching function of $K_{4,4}$, and its dual & Section~\ref{sec:towers} \\
 $T(w,s)$, $T(w,s)^\ast$ & the tribes function, an OR of $s$ disjoint ANDs of $w$ variables each, and its dual; used in Sections~\ref{sec:towers} and~\ref{sec:neg} & Section~\ref{sec:towers} \\
 $Q_2$, $R^\ast$ & $T(2,2)^\ast$, and the dual of the function on the edges of $K_4$ true when two opposite edges are present & Section~\ref{sec:towers} \\
 $\delta$ & the parameter of the $\delta$-tribes functions of~\cite{GMP}; in Section~\ref{sec:classes}, the influence $\Inf_i(f)$ of the coordinate under study & Section~\ref{sec:intro} \\
@@ -628,16 +629,17 @@ $L$ & the number of gates on the path from a leaf to the root & Theorem~\ref{thm
 $Z_l$, $p_l$, $c_l$, $P_l$ & along the path from a leaf to the root: the event that gate $l$ passes the path child, its probability, the output when blocked, and $p_1\cdots p_l$ & Theorem~\ref{thm:readonce} \\
 $R_r$, $R_\infty$ & the sums defined in Lemma~\ref{lem:path} & Lemma~\ref{lem:path} \\
 $\alpha$, $\beta$, $s$ & $a_l/d_l$, $(1-b_l)/d_l$ and $1+\alpha+\beta$ in the proof of Theorem~\ref{thm:readonce} & Section~\ref{sec:classes} \\
-$\psi$, $W$, $V$ & $\psi(t)=\Phi(2t+1)$ and the potential functions of the proof of Theorem~\ref{thm:readonce} & Section~\ref{sec:classes} \\
+$\psi$, $\Omega$, $\Theta$ & $\psi(t)=\Phi(2t+1)$ and the potential functions of the proof of Theorem~\ref{thm:readonce} & Section~\ref{sec:classes} \\
 $k$, $m$ & $k=2m+1$, the number of variables of $\mathrm{Maj}$ & Section~\ref{sec:neg} \\
 $\mathrm{Maj}$, $\mathrm{Maj}_b$ & majority on $k$ (respectively $b$) variables, value $-1$ when true & Section~\ref{sec:neg} \\
 $s$ & the size $|T|$ of an odd set $T\subseteq[k]$; in the proof for $a>0$, the number of terms of $T(w,s)$ & Section~\ref{sec:neg} \\
 $F$, $A$ & the function built in each construction, and an $m$-subset of $[k]$ & Section~\ref{sec:neg} \\
-$L$ & $\mathbf 1[|y|=m]$ in the proof of Proposition~\ref{prop:middle} & Section~\ref{sec:neg} \\
-$a$, $\hat a(T)$ & $\mathrm{Maj}-\mathbf 1[|y|=m]$ in Proposition~\ref{prop:middle} and its Fourier coefficients; elsewhere $a$ is the exponent in~\eqref{eq:power} & Section~\ref{sec:neg} \\
+$J$ & $\mathbf 1[|y|=m]$ in the proof of Proposition~\ref{prop:middle} & Section~\ref{sec:neg} \\
+$\rho$, $\hat\rho(T)$ & $\mathrm{Maj}-\mathbf 1[|y|=m]$ in Proposition~\ref{prop:middle} and its Fourier coefficients & Section~\ref{sec:neg} \\
+$a$ & the exponent of the influence weights in~\eqref{eq:power} & Section~\ref{sec:neg} \\
 $v$ & a leaf of $F_w$ in the proof for $a>0$ & Section~\ref{sec:neg} \\
 $\mathcal L$ & the Laplacian, $\mathcal L\chi_T=|T|\chi_T$ & Section~\ref{sec:neg} \\
-$\psi$, $\hat\psi$ & a balanced monotone function and its Fourier coefficients, in the argument for slowly varying weights & Section~\ref{sec:neg} \\
+$\varphi$, $\hat\varphi$ & a balanced monotone function and its Fourier coefficients, in the argument for slowly varying weights & Section~\ref{sec:neg} \\
 $\tau_b$ & $\binom{b-1}{(b-1)/2}2^{1-b}$, the influence of a coordinate of $\mathrm{Maj}_b$ & Section~\ref{sec:neg} \\
 \bottomrule
 \end{longtable}
