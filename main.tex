@@ -127,11 +127,11 @@ $T\subseteq[k]$ with probability $\hat g_\mu(T)^2$, then, independently for each
 $A_l$ in block $l$ with probability $\hat h(A_l)^2/\sigma^2$, and set $U=\bigcup_{l\in T}A_l$.
 
 \subsection{The leaf state}
-Fix a coordinate $i$ of $h$. Write $m(a,b)=(a+b)\,h_2\bigl(b/(a+b)\bigr)$ for $a,b\ge 0$, where
-$h_2(p)=-p\log_2p-(1-p)\log_2(1-p)$ and $m(0,0)=0$; this is the unnormalised entropy of a two-point mass. Grouping
+Fix a coordinate $i$ of $h$. Write $\Lambda(a,b)=(a+b)\,h_2\bigl(b/(a+b)\bigr)$ for $a,b\ge 0$, where
+$h_2(p)=-p\log_2p-(1-p)\log_2(1-p)$ and $\Lambda(0,0)=0$; this is the unnormalised entropy of a two-point mass. Grouping
 the spectral sets of $h$ according to $B=U\setminus\{i\}$,
 \begin{equation}\label{eq:Esplit}
-E_i(h)=\sum_{B\not\ni i}m\bigl(\hat h(B)^2,\hat h(B\cup\{i\})^2\bigr)=e(h)+m\bigl(\mu^2,\hat h(\{i\})^2\bigr),
+E_i(h)=\sum_{B\not\ni i}\Lambda\bigl(\hat h(B)^2,\hat h(B\cup\{i\})^2\bigr)=e(h)+\Lambda\bigl(\mu^2,\hat h(\{i\})^2\bigr),
 \end{equation}
 where $e(h)$ is the sum over $B\ne\emptyset$. We call $(\mu,\,\hat h(\{i\})^2,\,e(h),\,\Inf_i(h))$ the state of the
 leaf $i$ in $h$.
@@ -143,9 +143,9 @@ on $g$. Then the state $(\mu',P',e',I')$ of $i$ in $f$ is
 \begin{align*}
 \mu'&=\hat g(\emptyset), & P'&=\hat g(\{j\})^2\,\frac{P}{\sigma^2},\\
 I'&=W_j\,\frac{I}{\sigma^2}, & e'&=W_j\,\frac{e}{\sigma^2}
-+\sum_{\substack{R\ne\emptyset\\ j\notin R}} m\Bigl(\hat g(R)^2,\ \hat g(R\cup\{j\})^2\,\frac{P}{\sigma^2}\Bigr),
++\sum_{\substack{R\ne\emptyset\\ j\notin R}} \Lambda\Bigl(\hat g(R)^2,\ \hat g(R\cup\{j\})^2\,\frac{P}{\sigma^2}\Bigr),
 \end{align*}
-and $E_i(f)=e'+m(\mu'^2,P')$.
+and $E_i(f)=e'+\Lambda(\mu'^2,P')$.
 \end{theorem}
 
 \begin{proof}
@@ -163,8 +163,8 @@ nonempty $B$ gives $W_j\,e/\sigma^2$.
 If $B=\emptyset$ then either $j\notin T$, so $T=R$ and $i\notin U$, with probability $\hat g(R)^2$, or $T=R\cup\{j\}$
 and $A_j=\{i\}$, with probability $\hat g(R\cup\{j\})^2P/\sigma^2$. The outcomes in the other blocks factor out of
 both alternatives with the same weight, so this part contributes
-$\sum_{R\not\ni j}m(\hat g(R)^2,\hat g(R\cup\{j\})^2P/\sigma^2)$. The term $R=\emptyset$ is the one in which
-$U\setminus\{i\}=\emptyset$; it equals $m(\mu'^2,P')$, and the remaining terms together with $W_je/\sigma^2$ form
+$\sum_{R\not\ni j}\Lambda(\hat g(R)^2,\hat g(R\cup\{j\})^2P/\sigma^2)$. The term $R=\emptyset$ is the one in which
+$U\setminus\{i\}=\emptyset$; it equals $\Lambda(\mu'^2,P')$, and the remaining terms together with $W_je/\sigma^2$ form
 $e'$, the part of $E_i(f)$ over nonempty $U\setminus\{i\}$.
 \end{proof}
 
@@ -265,10 +265,10 @@ fixed points carry a smaller leaf ratio, and none of depth at most four below th
 Throughout this section $f$ is Boolean, $i$ is a coordinate with $\delta=\Inf_i(f)>0$, and for $T\not\ni i$ we put
 $p_T=\hat f(T)^2$ and $q_T=\hat f(T\cup\{i\})^2$. Conditioning on $U\setminus\{i\}=T$ gives
 \begin{equation}\label{eq:erasure}
-E_i(f)=\sum_{T\not\ni i}m(p_T,q_T),\qquad \Inf_i(f)=\sum_{T\not\ni i}q_T .
+E_i(f)=\sum_{T\not\ni i}\Lambda(p_T,q_T),\qquad \Inf_i(f)=\sum_{T\not\ni i}q_T .
 \end{equation}
-The function $m$ is concave, increasing in each argument and homogeneous of degree one, hence superadditive:
-$\sum_T m(a_T,b_T)\le m(\sum_Ta_T,\sum_Tb_T)$. Write $\xi=\E_if$ and $\eta=\mathrm D_if$, so that $f=\xi+x_i\eta$,
+The function $\Lambda$ is concave, increasing in each argument and homogeneous of degree one, hence superadditive:
+$\sum_T \Lambda(a_T,b_T)\le \Lambda(\sum_Ta_T,\sum_Tb_T)$. Write $\xi=\E_if$ and $\eta=\mathrm D_if$, so that $f=\xi+x_i\eta$,
 $p_T=\hat \xi(T)^2$ and $q_T=\hat \eta(T)^2$; since $\eta$ takes values in $\{-1,0,1\}$, $\sum_Tq_T=\E \eta^2=\delta$.
 
 \begin{lemma}\label{lem:var}
@@ -279,11 +279,11 @@ For every Boolean $f$ and every coordinate $i$ with $\delta=\Inf_i(f)>0$,
 \end{lemma}
 
 \begin{proof}
-For $t\in[0,1]$ one has $h_2(t)\le 2\sqrt{t(1-t)}$, so $m(a,b)\le 2\sqrt{ab}$. The term $T=\emptyset$ is therefore at
+For $t\in[0,1]$ one has $h_2(t)\le 2\sqrt{t(1-t)}$, so $\Lambda(a,b)\le 2\sqrt{ab}$. The term $T=\emptyset$ is therefore at
 most $2\sqrt{q_\emptyset}=2|\E \eta|\le 2\delta$. For the others, $\sum_{T\ne\emptyset}p_T=\mathrm{Var}(\xi)\le\mathrm{Var}(f)=V$
 and $\sum_{T\neq\emptyset}q_T\le\delta$, so by superadditivity and monotonicity
 \[
-\sum_{T\ne\emptyset}m(p_T,q_T)\le m(V,\delta)=V\log_2\Bigl(1+\frac{\delta}{V}\Bigr)+\delta\log_2\Bigl(1+\frac V\delta\Bigr)
+\sum_{T\ne\emptyset}\Lambda(p_T,q_T)\le \Lambda(V,\delta)=V\log_2\Bigl(1+\frac{\delta}{V}\Bigr)+\delta\log_2\Bigl(1+\frac V\delta\Bigr)
 \le\frac{\delta}{\ln2}+\delta\log_2\Bigl(1+\frac V\delta\Bigr).\qedhere
 \]
 \end{proof}
@@ -345,7 +345,7 @@ assume $0<p_l<1$: a gate with $p_l=1$ can be deleted and one with $p_l=0$ makes 
 $f_0=x_i$, $f_l=c_l(1-Z_l)+f_{l-1}Z_l$ and $f=f_L$. Put $P_0=1$, $P_l=p_1\cdots p_l$ and $\delta=P_L=\Inf_i(f)$.
 
 \begin{lemma}\label{lem:path}
-Let $\Phi(u)=m(u^2,1)$. With
+Let $\Phi(u)=\Lambda(u^2,1)$. With
 $R_r=\sum_{l<r}c_l(1-p_l)/P_l-c_r/P_{r-1}$ and $R_\infty=\sum_{l\le L}c_l(1-p_l)/P_l$,
 \[
 \frac{E_i(f)}{\delta}=\sum_{r=1}^L(P_{r-1}-P_r)\,\Phi(R_r)+\delta\,\Phi(R_\infty).
@@ -357,7 +357,7 @@ Unrolling the recursion, $\eta=\mathrm D_if=\prod_lZ_l$ and $\xi=\E_if=\sum_lc_l
 $S\not\ni i$ splits into block parts $S_l$, and $\hat \eta(S)=\prod_l\hat Z_l(S_l)$ with $\hat Z_l(\emptyset)=p_l$. If
 $r$ is the first $l$ with $S_l\ne\emptyset$, only the terms $l\le r$ of $\xi$ contribute, and
 $\hat \xi(S)=R_r\hat \eta(S)$; if all $S_l$ are empty, $\hat \xi(S)=R_\infty\hat \eta(S)$. By homogeneity
-$m(p_S,q_S)=q_S\Phi(\hat \xi(S)/\hat \eta(S))$ when $\hat \eta(S)\ne0$, and $m(p_S,0)=0$. Under the law $q_S/\delta$ the blocks
+$\Lambda(p_S,q_S)=q_S\Phi(\hat \xi(S)/\hat \eta(S))$ when $\hat \eta(S)\ne0$, and $\Lambda(p_S,0)=0$. Under the law $q_S/\delta$ the blocks
 are independent, block $l$ is empty with probability $p_l$, so the first nonempty block is $r$ with probability
 $P_{r-1}-P_r$ and none is nonempty with probability $\delta$. Now apply~\eqref{eq:erasure}.
 \end{proof}
@@ -438,14 +438,14 @@ $E_i/\Inf_i>C$.
 Fix an $m$-subset $A$ of $[k]$ and let $F(x,y)=\mathrm{Maj}(y)\vee(x\wedge\bigwedge_{j\in A}y_j)$. The only $y$ at which
 $x$ matters is $y=1_A$, so $\Inf_x(F)=2^{-k}$, $\mathrm D_xF=\pm\mathbf 1[y=1_A]$ and $q_T=4^{-k}$ for all $T\subseteq[k]$.
 Moreover $\E_xF=\mathrm{Maj}-\mathrm{Maj}(1_A)\mathbf 1[y=1_A]$ differs from $\mathrm{Maj}$ in each coefficient by $2^{-k}$.
-Since $m(a,b)\ge b\log_2(1+a/b)$, \eqref{eq:erasure} and~\eqref{eq:majlow} give, for $m$ large,
+Since $\Lambda(a,b)\ge b\log_2(1+a/b)$, \eqref{eq:erasure} and~\eqref{eq:majlow} give, for $m$ large,
 \[
 \frac{E_x(F)}{\Inf_x(F)}\ge2^{-k}\sum_{|T|\text{ odd}}\log_2\bigl(1+(2^k\hat F(T))^2\bigr)
 \ge\log_2\Bigl(\frac{2^{m+1}}{(2m+1)(m+1)}-1\Bigr)=\frac k2-O(\log k).
 \]
 Now replace each $y_j$ by a majority of $b$ fresh variables, $b$ odd. Because the inner function is balanced, the
 spectral sample of the composition is that of $F$ with each block refined independently by $\hat{\mathrm{Maj}_b}^2$,
-which has total mass one on nonempty sets; by homogeneity of $m$ this leaves $E_x$ and $\Inf_x$ unchanged, while each
+which has total mass one on nonempty sets; by homogeneity of $\Lambda$ this leaves $E_x$ and $\Inf_x$ unchanged, while each
 new leaf has influence $\Inf_{y_j}(F)\binom{b-1}{(b-1)/2}2^{1-b}\to0$. For $b$ large $x$ is the unique coordinate of
 largest influence, and the composition is monotone.
 \end{proof}
@@ -479,7 +479,7 @@ and $\Phi(u)\ge\log_2(1+u^2)$, as before.
 So all but $k$ of the $k+\binom km$ coordinates have unbounded ratio. The $k$ base coordinates stay good. With
 $r=\binom km$ and $\varepsilon=2^{-k}$, a base coordinate $y_1$ has influence $r\varepsilon$. A frequency containing one hidden
 variable $z_B$ has coefficient $\pm2^{-k}\chi_T(1_B)$ at $T\cup\{z_B\}$, $T\subseteq[k]$, so the pairs $T$,
-$T\cup\{1\}$ have equal squares $4^{-k}$, and since $m(c,c)=2c$ these frequencies contribute exactly $r\varepsilon$ to
+$T\cup\{1\}$ have equal squares $4^{-k}$, and since $\Lambda(c,c)=2c$ these frequencies contribute exactly $r\varepsilon$ to
 $E_{y_1}$. The remaining frequencies give $E_{y_1}(a)$, so the ratio of $y_1$ is $1+E_{y_1}(a)/(r\varepsilon)$, which
 is $2.14$ at $k=17$. At $k=17$ the hidden ratio is $14.45$, against $\log_2\binom{17}8=14.57$.
 
@@ -504,7 +504,7 @@ function $T(w,s)$ on fresh variables, with $s=\mathrm{round}(2^w\ln2)$. Call the
 tribes function
 has mean $\mu_w=2(1-2^{-w})^s-1$, and $\mu_w\to0$ as $w\to\infty$. The expansion of Section~\ref{sec:biased} applies with $x$ kept
 as a block of its own, expanded in the uniform basis, and each $y_j$ expanded in the $\mu_w$-biased basis. Whether
-$x\in U$ depends only on the first stage of the draw, so by homogeneity of $m$ the quantities $E_x(F_w)$ and
+$x\in U$ depends only on the first stage of the draw, so by homogeneity of $\Lambda$ the quantities $E_x(F_w)$ and
 $\Inf_x(F_w)$ are those of $F$ computed in this mixed basis. They are continuous in $\mu_w$, and therefore converge to
 $E_x(F)$ and $\Inf_x(F)=2^{-k}$. A leaf $v$ in block $j$ is pivotal for $F_w$ exactly when it is pivotal for its copy
 of $T(w,s)$ and $y_j$ is pivotal for $F$, and the two events are independent. Hence
@@ -530,7 +530,7 @@ $\sum_ig(\Inf_i(f))E_i(f)\le C\sum_ig(\Inf_i(f))\Inf_i(f)$ for all monotone $f$,
 for every balanced monotone $\psi$. To see this, let $b$ be odd and $h=\mathrm{Maj}_b(\psi(x^1),\dots,\psi(x^b))$ on
 disjoint blocks. Since $\hat\psi(\emptyset)=0$, $\hat h$ at a frequency with nonempty parts $S_j$, $j\in T$, is
 $\hat{\mathrm{Maj}_b}(T)\prod_{j\in T}\hat\psi(S_j)$. For a leaf $i$ of block $j$, the pairs $(S,S\cup\{i\})$ with
-$S\ne\emptyset$ in block $j$ keep $T$, and by homogeneity of $m$ they give $\tau_bE_i(\psi)$, where
+$S\ne\emptyset$ in block $j$ keep $T$, and by homogeneity of $\Lambda$ they give $\tau_bE_i(\psi)$, where
 $\tau_b=\binom{b-1}{(b-1)/2}2^{1-b}$ is the influence of a coordinate of $\mathrm{Maj}_b$. The pair
 $(\emptyset,\{i\})$ changes $|T|$ by one, so one of its two coefficients vanishes, because $\mathrm{Maj}_b$ has
 weight only on odd sets. Hence $E_{(j,i)}(h)=\tau_bE_i(\psi)$ and $\Inf_{(j,i)}(h)=\tau_b\Inf_i(\psi)$, and
@@ -588,8 +588,7 @@ The paper is part of the Math Brain project, whose public repository is
 \section{Notation}\label{app:notation}
 
 Symbols are listed in the order in which they first appear, and the last column gives that place. The letters $k$, $s$ and $T$, and the gate names of Section~\ref{sec:towers}, are reused with different meanings in
-different sections; the meaning column says where each meaning holds. Without arguments, $m$ denotes an integer; with two arguments it is the
-function $m(a,b)$.
+different sections; the meaning column says where each meaning holds.
 
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.19\textwidth}>{\raggedright\arraybackslash}p{0.54\textwidth}>{\raggedright\arraybackslash}p{0.2\textwidth}@{}}
 \toprule
@@ -611,7 +610,7 @@ $\hat g_\mu(T)$ & the $\mu$-biased Fourier coefficient of a gate $g$ at $T\subse
 $g$, $h$, $k$ & a gate on $k$ inputs and the inner function, in the composition $f=g(h,\dots,h)$; these meanings hold in Sections~\ref{sec:intro} to~\ref{sec:towers} & Section~\ref{sec:intro} \\
 $A_l$, $B$ & a nonempty subset of block $l$; and $U\setminus\{i\}$ in~\eqref{eq:Esplit} & Section~\ref{sec:comp} \\
 $h_2$ & the binary entropy $h_2(p)=-p\log_2p-(1-p)\log_2(1-p)$ & Section~\ref{sec:comp} \\
-$m(a,b)$ & the unnormalised two-point entropy $(a+b)\,h_2\bigl(b/(a+b)\bigr)$, with $m(0,0)=0$ & Section~\ref{sec:comp} \\
+$\Lambda(a,b)$ & the unnormalised two-point entropy $(a+b)\,h_2\bigl(b/(a+b)\bigr)$, with $\Lambda(0,0)=0$ & Section~\ref{sec:comp} \\
 $(\mu,P,e,I)$ & the state of a leaf $i$ in $h$: mean of $h$, $\hat h(\{i\})^2$, the part $e(h)$ of $E_i(h)$ over nonempty $U\setminus\{i\}$, and $\Inf_i(h)$ & Section~\ref{sec:comp} \\
 $W_j$ & the $\mu$-biased influence $\sum_{T\ni j}\hat g_\mu(T)^2$ of input $j$ on $g$ & Theorem~\ref{thm:comp} \\
 $M$, $D$ & the perfect-matching function of $K_{3,3}$ on its nine edges, and its dual & Section~\ref{sec:towers} \\
@@ -624,7 +623,7 @@ $p_T$, $q_T$ & $\hat f(T)^2$ and $\hat f(T\cup\{i\})^2$ for $T\not\ni i$ & Secti
 $\E_if$, $\mathrm D_if$ & $\tfrac12(f_{i\to1}+f_{i\to-1})$ and $\tfrac12(f_{i\to1}-f_{i\to-1})$, so that $f=\E_if+x_i\mathrm D_if$; used in Sections~\ref{sec:classes} and~\ref{sec:neg} & Section~\ref{sec:classes} \\
 $\xi$, $\eta$ & $\E_if$ and $\mathrm D_if$ & Section~\ref{sec:classes} \\
 $\mathrm{Var}(f)$, $V$ & the variance of $f$; $V$ in Theorem~\ref{thm:width} & Section~\ref{sec:intro} \\
-$\Phi$ & $\Phi(u)=m(u^2,1)$; used in Sections~\ref{sec:classes} and~\ref{sec:neg} & Lemma~\ref{lem:path} \\
+$\Phi$ & $\Phi(u)=\Lambda(u^2,1)$; used in Sections~\ref{sec:classes} and~\ref{sec:neg} & Lemma~\ref{lem:path} \\
 $L$ & the number of gates on the path from a leaf to the root & Theorem~\ref{thm:readonce} \\
 $Z_l$, $p_l$, $c_l$, $P_l$ & along the path from a leaf to the root: the event that gate $l$ passes the path child, its probability, the output when blocked, and $p_1\cdots p_l$ & Theorem~\ref{thm:readonce} \\
 $R_r$, $R_\infty$ & the sums defined in Lemma~\ref{lem:path} & Lemma~\ref{lem:path} \\
