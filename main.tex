@@ -40,7 +40,7 @@ averaged with weights $\Inf_i^{a+1}$ for any $a\ne0$.
 
 \maketitle
 
-\section{Introduction}
+\section{Introduction}\label{sec:intro}
 
 Let $f:\{-1,1\}^n\to\{-1,1\}$ have Fourier expansion $f=\sum_S\hat f(S)\chi_S$, and let $U\subseteq[n]$ be drawn with
 $\Pr[U=S]=\hat f(S)^2$. The spectral entropy of $f$ is $H(f)=H(U)$ and the influence of $i$ is
@@ -588,46 +588,46 @@ The paper is part of the Math Brain project, whose public repository is
 \appendix
 \section{Notation}\label{app:notation}
 
-Symbols are listed in the order in which they first appear. The letters $g$, $h$, $k$, $s$, $T$ and $\delta$, and the
-gate names of Section~\ref{sec:towers}, are reused with different meanings in different sections; the last column gives
-the section in which each meaning holds. Without arguments, $m$ denotes an integer; with two arguments it is the
+Symbols are listed in the order in which they first appear, and the last column gives that place. The letters $g$,
+$h$, $k$, $s$, $T$ and $\delta$, and the gate names of Section~\ref{sec:towers}, are reused with different meanings in
+different sections; the meaning column says where each meaning holds. Without arguments, $m$ denotes an integer; with two arguments it is the
 function $m(a,b)$.
 
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.19\textwidth}>{\raggedright\arraybackslash}p{0.54\textwidth}>{\raggedright\arraybackslash}p{0.2\textwidth}@{}}
 \toprule
-Symbol & Meaning & Where \\
+Symbol & Meaning & First appears \\
 \midrule
 \endhead
-$f$ & a Boolean function $\{-1,1\}^n\to\{-1,1\}$ & throughout \\
-$\hat f(S)$, $\chi_S$ & the Fourier coefficient of $f$ at $S\subseteq[n]$, and the character $\prod_{i\in S}x_i$ & throughout \\
-$U$ & the spectral sample, a random set with $\Pr[U=S]=\hat f(S)^2$ & throughout \\
-$H(f)$ & the spectral entropy $H(U)$, in bits & throughout \\
-$\Inf_i(f)$ & the influence of $i$, $\Pr[i\in U]$ & throughout \\
-$\mathrm I(f)$ & the total influence $\sum_i\Inf_i(f)$ & throughout \\
-$C^\ast$ & the least constant $C$ with $H(f)\le C\,\mathrm I(f)$ for all $f$ & throughout \\
-$E_i(f)$ & the conditional entropy $H(\mathbf 1[i\in U]\mid U\setminus\{i\})$ & throughout \\
-$\G(f)$, $\G$ & $\min_{i:\Inf_i(f)>0}E_i(f)/\Inf_i(f)$, and its supremum over all nonconstant Boolean $f$ & throughout \\
-$\G_{\mathrm{mon}}$ & the supremum of $\G(f)$ over monotone $f$ & throughout \\
+$f$ & a Boolean function $\{-1,1\}^n\to\{-1,1\}$ & Section~\ref{sec:intro} \\
+$\hat f(S)$, $\chi_S$ & the Fourier coefficient of $f$ at $S\subseteq[n]$, and the character $\prod_{i\in S}x_i$ & Section~\ref{sec:intro} \\
+$U$ & the spectral sample, a random set with $\Pr[U=S]=\hat f(S)^2$ & Section~\ref{sec:intro} \\
+$H(f)$ & the spectral entropy $H(U)$, in bits & Section~\ref{sec:intro} \\
+$\Inf_i(f)$ & the influence of $i$, $\Pr[i\in U]$ & Section~\ref{sec:intro} \\
+$\mathrm I(f)$ & the total influence $\sum_i\Inf_i(f)$ & Section~\ref{sec:intro} \\
+$C^\ast$ & the least constant $C$ with $H(f)\le C\,\mathrm I(f)$ for all $f$ & Section~\ref{sec:intro} \\
+$E_i(f)$ & the conditional entropy $H(\mathbf 1[i\in U]\mid U\setminus\{i\})$ & Section~\ref{sec:intro} \\
+$\G(f)$, $\G$ & $\min_{i:\Inf_i(f)>0}E_i(f)/\Inf_i(f)$, and its supremum over all nonconstant Boolean $f$ & Section~\ref{sec:intro} \\
+$\G_{\mathrm{mon}}$ & the supremum of $\G(f)$ over monotone $f$ & Section~\ref{sec:intro} \\
 $\mu$, $\sigma$, $\phi_\mu$ & a mean in $(-1,1)$, $\sigma=\sqrt{1-\mu^2}$, and $\phi_\mu(y)=(y-\mu)/\sigma$ & Section~\ref{sec:comp} \\
-$\hat g_\mu(T)$ & the $\mu$-biased Fourier coefficient of a gate $g$ at $T\subseteq[k]$ & Sections~\ref{sec:comp}, \ref{sec:towers} \\
-$g$, $h$, $k$ & a gate on $k$ inputs and the inner function, in the composition $f=g(h,\dots,h)$ & Sections 1 to \ref{sec:towers} \\
+$\hat g_\mu(T)$ & the $\mu$-biased Fourier coefficient of a gate $g$ at $T\subseteq[k]$; used in Sections~\ref{sec:comp} and~\ref{sec:towers} & Section~\ref{sec:comp} \\
+$g$, $h$, $k$ & a gate on $k$ inputs and the inner function, in the composition $f=g(h,\dots,h)$; these meanings hold in Sections~1 to~\ref{sec:towers} & Section~\ref{sec:intro} \\
 $A_l$, $B$ & a nonempty subset of block $l$; and $U\setminus\{i\}$ in~\eqref{eq:Esplit} & Section~\ref{sec:comp} \\
-$h_2$ & the binary entropy $h_2(p)=-p\log_2p-(1-p)\log_2(1-p)$ & throughout \\
-$m(a,b)$ & the unnormalised two-point entropy $(a+b)\,h_2\bigl(b/(a+b)\bigr)$, with $m(0,0)=0$ & throughout \\
+$h_2$ & the binary entropy $h_2(p)=-p\log_2p-(1-p)\log_2(1-p)$ & Section~\ref{sec:comp} \\
+$m(a,b)$ & the unnormalised two-point entropy $(a+b)\,h_2\bigl(b/(a+b)\bigr)$, with $m(0,0)=0$ & Section~\ref{sec:comp} \\
 $(\mu,P,e,I)$ & the state of a leaf $i$ in $h$: mean of $h$, $\hat h(\{i\})^2$, the part $e(h)$ of $E_i(h)$ over nonempty $U\setminus\{i\}$, and $\Inf_i(h)$ & Section~\ref{sec:comp} \\
 $W_j$ & the $\mu$-biased influence $\sum_{T\ni j}\hat g_\mu(T)^2$ of input $j$ on $g$ & Theorem~\ref{thm:comp} \\
 $M$, $D$ & the perfect-matching function of $K_{3,3}$ on its nine edges, and its dual & Section~\ref{sec:towers} \\
 $P$, $P^\ast$ & the perfect-matching function of $K_{4,4}$, and its dual & Section~\ref{sec:towers} \\
-$T(w,s)$, $T(w,s)^\ast$ & the tribes function, an OR of $s$ disjoint ANDs of $w$ variables each, and its dual & Sections~\ref{sec:towers}, \ref{sec:neg} \\
+$T(w,s)$, $T(w,s)^\ast$ & the tribes function, an OR of $s$ disjoint ANDs of $w$ variables each, and its dual; used in Sections~\ref{sec:towers} and~\ref{sec:neg} & Section~\ref{sec:towers} \\
 $Q_2$, $R^\ast$ & $T(2,2)^\ast$, and the dual of the function on the edges of $K_4$ true when two opposite edges are present & Section~\ref{sec:towers} \\
-$\delta$ & the influence $\Inf_i(f)$ of the coordinate under study; in Section~\ref{sec:neg}, $2^{-k}$ & Sections~\ref{sec:classes}, \ref{sec:neg} \\
+$\delta$ & the parameter of the $\delta$-tribes functions of~\cite{GMP}; in Section~\ref{sec:classes}, the influence $\Inf_i(f)$ of the coordinate under study; in Section~\ref{sec:neg}, $2^{-k}$ & Section~\ref{sec:intro} \\
 $p_T$, $q_T$ & $\hat f(T)^2$ and $\hat f(T\cup\{i\})^2$ for $T\not\ni i$ & Section~\ref{sec:classes} \\
-$\E_if$, $\mathrm D_if$ & $\tfrac12(f_{i\to1}+f_{i\to-1})$ and $\tfrac12(f_{i\to1}-f_{i\to-1})$, so that $f=\E_if+x_i\mathrm D_if$ & Sections~\ref{sec:classes}, \ref{sec:neg} \\
+$\E_if$, $\mathrm D_if$ & $\tfrac12(f_{i\to1}+f_{i\to-1})$ and $\tfrac12(f_{i\to1}-f_{i\to-1})$, so that $f=\E_if+x_i\mathrm D_if$; used in Sections~\ref{sec:classes} and~\ref{sec:neg} & Section~\ref{sec:classes} \\
 $g$, $h$ & $\E_if$ and $\mathrm D_if$ & Section~\ref{sec:classes} \\
-$\mathrm{Var}(f)$, $V$ & the variance of $f$ & Lemma~\ref{lem:var}, Theorem~\ref{thm:width} \\
-$\Phi$ & $\Phi(u)=m(u^2,1)$ & Sections~\ref{sec:classes}, \ref{sec:neg} \\
-$L$ & the number of gates on the path from a leaf to the root & Section~\ref{sec:classes} \\
-$Z_l$, $p_l$, $c_l$, $P_l$ & along the path from a leaf to the root: the event that gate $l$ passes the path child, its probability, the output when blocked, and $p_1\cdots p_l$ & Lemma~\ref{lem:path} \\
+$\mathrm{Var}(f)$, $V$ & the variance of $f$; $V$ in Theorem~\ref{thm:width} & Section~\ref{sec:intro} \\
+$\Phi$ & $\Phi(u)=m(u^2,1)$; used in Sections~\ref{sec:classes} and~\ref{sec:neg} & Lemma~\ref{lem:path} \\
+$L$ & the number of gates on the path from a leaf to the root & Theorem~\ref{thm:readonce} \\
+$Z_l$, $p_l$, $c_l$, $P_l$ & along the path from a leaf to the root: the event that gate $l$ passes the path child, its probability, the output when blocked, and $p_1\cdots p_l$ & Theorem~\ref{thm:readonce} \\
 $R_r$, $R_\infty$ & the sums defined in Lemma~\ref{lem:path} & Lemma~\ref{lem:path} \\
 $\alpha$, $\beta$, $s$ & $a_l/d_l$, $(1-b_l)/d_l$ and $1+\alpha+\beta$ in the proof of Theorem~\ref{thm:readonce} & Section~\ref{sec:classes} \\
 $\psi$, $W$, $V$ & $\psi(t)=\Phi(2t+1)$ and the potential functions of the proof of Theorem~\ref{thm:readonce} & Section~\ref{sec:classes} \\
