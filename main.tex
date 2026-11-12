@@ -23,17 +23,15 @@
 \begin{document}
 
 \begin{abstract}
-For a Boolean function $f$ let $E_i(f)=H(\mathbf 1[i\in U]\mid U\setminus\{i\})$, where $U$ is drawn from the spectral
-distribution $\hat f^2$. The Fourier entropy-influence conjecture holds if and only if the quantity
-$\G=\sup_f\min_i E_i(f)/\Inf_i(f)$ is finite, and then its constant lies between $\G$ and $\G+2/\ln 2$. We study $\G$
-directly. A composition identity computes $E_i$ and $\Inf_i$ for iterated block compositions $g(h,\dots,h)$ exactly
-from the biased spectrum of $g$, and towers of transitive monotone gates give $\G_{\mathrm{mon}}\ge 4.50642846$,
-where $\G_{\mathrm{mon}}$ is the supremum over monotone functions. On the other side we show that every width-$w$ formula
-in disjunctive normal form has a coordinate with $E_i/\Inf_i\le 2+\log_2 e+\log_2(2^{w+1}-1)$, with no monotonicity or read restriction, and
-that every relevant leaf of a read-once AND/OR formula has $E_i/\Inf_i<\pi/\ln 2$, which is sharp. Finally we show
-that the coordinate of largest influence is not a valid selection rule, and that all but a vanishing fraction of the
-coordinates of a monotone function can have $E_i/\Inf_i$ bounded below by any constant. Nor can the ratios be
-averaged with weights $\Inf_i^{a+1}$ for any $a\ne0$.
+For a Boolean function $f$ and a coordinate $i$, let $E_i(f)$ be the conditional entropy of the event $i\in U$ given
+$U\setminus\{i\}$, where $U$ is drawn from the spectral distribution. The Fourier entropy-influence conjecture holds if
+and only if there is one constant $C$ such that every nonconstant Boolean function has a coordinate with
+$E_i\le C\Inf_i$. An exact identity for block compositions, applied to towers of monotone gates, shows that the least
+such constant for monotone functions is at least $4.5064$. In the other direction, every formula in disjunctive normal
+form of width $w$ has a coordinate whose ratio $E_i/\Inf_i$ is below $w+4.45$, and every relevant leaf of a read-once
+formula has ratio below $\pi/\ln2$, which is sharp. Three natural ways of choosing the coordinate fail: the coordinate
+of largest influence, a typical coordinate, and averages of the ratios weighted by a power of the influence other than
+the first.
 \end{abstract}
 
 \subjclass[2020]{06E30, 42C10, 94A17}
