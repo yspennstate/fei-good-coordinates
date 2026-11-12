@@ -195,9 +195,9 @@ output $-1$ when the gate is true. The gates used are:
 \item $M$, the perfect-matching function of $K_{3,3}$: $z$ indexes the nine edges and $M(z)=1$ when the chosen edges
 contain a perfect matching; $D(z)=1-M(\mathbf 1-z)$ is its dual;
 \item $N$, the perfect-matching function of $K_{4,4}$ on sixteen edges, and its dual $N^\ast$;
-\item the tribes functions $T(w,s)$, the OR of $s$ disjoint ANDs of $w$ variables each, and their duals
-$T(w,s)^\ast$; we also write $Q_2=T(2,2)^\ast$, and $R^\ast$ for the dual of the function on the six edges of $K_4$ that is
-true when two opposite edges are both present (a copy of $T(2,3)$).
+\item the tribes functions $\mathrm{Tr}(w,s)$, the OR of $s$ disjoint ANDs of $w$ variables each, and their duals
+$\mathrm{Tr}(w,s)^\ast$; we also write $Q_2=\mathrm{Tr}(2,2)^\ast$, and $R^\ast$ for the dual of the function on the six edges of $K_4$ that is
+true when two opposite edges are both present (a copy of $\mathrm{Tr}(2,3)$).
 \end{itemize}
 Each gate is monotone and its automorphism group is transitive on its inputs. A word $g_1g_2\cdots g_d$ denotes the
 iterated composition in which $g_1$ is applied to disjoint blocks of variables, $g_2$ to disjoint blocks of copies
@@ -216,17 +216,18 @@ $\G(f)$ equal to the value shown, to the number of digits shown. In particular
 
 \begin{table}[tbp]
 \centering
+\small
 \setlength{\tabcolsep}{4pt}
 \begin{tabular}{lrl}
 \toprule
 word (bottom to top) & variables & $\G(f)$\\\midrule
-$M\,D\,D\,D\,D\,T(2,5)^\ast$ & $5.9\times10^{5}$ & $4.50585006207690030206437435306$\\
+$M\,D\,D\,D\,D\,\mathrm{Tr}(2,5)^\ast$ & $5.9\times10^{5}$ & $4.50585006207690030206437435306$\\
 $M\,D\,D\,M\,M\,D\,D$ & $4.8\times10^{6}$ & $4.50504996749762792695710133417$\\
 $M\,D\,D\,D\,D\,D\,M\,M$ & $4.3\times10^{7}$ & $4.50637987946771061063535681398$\\
 $D\,M^{12}$ & $2.5\times10^{12}$ & $4.50642830552543541108624856879$\\
-$M\,D^4\,M\,N\,N\,N\,Q_2\,R^\ast\,T(4,3)^\ast\,T(2,6)\,T(3,5)$ & $1.1\times10^{14}$ & $4.50640064551556843550717367045$\\
-$D\,M^{8}\,N^\ast\,M\,M\,T(3,5)$ & $7.5\times10^{12}$ & $4.50642846293912877531310941280$\\
-$M\,D^{8}\,N\,D\,D\,T(4,3)^\ast\,T(3,5)\,T(3,5)$ & $1.4\times10^{15}$ & $4.50642846544523317790928639245$\\
+$M\,D^4\,M\,N\,N\,N\,Q_2\,R^\ast\,\mathrm{Tr}(4,3)^\ast\,\mathrm{Tr}(2,6)\,\mathrm{Tr}(3,5)$ & $1.1\times10^{14}$ & $4.50640064551556843550717367045$\\
+$D\,M^{8}\,N^\ast\,M\,M\,\mathrm{Tr}(3,5)$ & $7.5\times10^{12}$ & $4.50642846293912877531310941280$\\
+$M\,D^{8}\,N\,D\,D\,\mathrm{Tr}(4,3)^\ast\,\mathrm{Tr}(3,5)\,\mathrm{Tr}(3,5)$ & $1.4\times10^{15}$ & $4.50642846544523317790928639245$\\
 \bottomrule
 \end{tabular}
 \caption{Lower bounds for $\G_{\mathrm{mon}}$ from towers. Values to 30 digits are computed with 40-digit arithmetic.}
@@ -256,8 +257,8 @@ before it escapes; the top gates spend what is left. If the mean could be held a
 the state produced by $D$, the ratio would tend to $4.5064554626637$. This is a heuristic target rather than a
 bound: no finite tower holds the mean at a repelling fixed point, the limit depends on the starting state
 ($4.5064428$ from the state after $D\,M$, $4.5064353$ after $D\,M\,M$), and we do not know whether
-$\G_{\mathrm{mon}}$ exceeds it. The same heuristic for other gates gives larger targets, $4.5168$ for $T(2,2)^\ast$
-pinned at its fixed mean $0.236068$ and $4.5107$ for $T(4,3)^\ast$, but towers that bring the mean close to these
+$\G_{\mathrm{mon}}$ exceeds it. The same heuristic for other gates gives larger targets, $4.5168$ for $\mathrm{Tr}(2,2)^\ast$
+pinned at its fixed mean $0.236068$ and $4.5107$ for $\mathrm{Tr}(4,3)^\ast$, but towers that bring the mean close to these
 fixed points carry a smaller leaf ratio, and none of depth at most four below the pinned gate exceeds $4.504$.
 \end{remark}
 
@@ -501,15 +502,15 @@ contribute $r\varepsilon^{a+1}$ to the right side and the base coordinates $k(r\
 The left side is at least $r\varepsilon^{a}E_{z_A}$, so the quotient is at least $(E_{z_A}/\varepsilon)/(1+kr^a)\to\infty$.
 For $a>0$ let $F(x,y)=\mathrm{Maj}(y)\vee(x\wedge\bigwedge_{j\in A}y_j)$ be the function in the proof of
 Proposition~\ref{prop:maxinf}, before the majority substitution, and replace each $y_j$ by a copy of the tribes
-function $T(w,s)$ on fresh variables, with $s=\mathrm{round}(2^w\ln2)$. Call the result $F_w$; it is monotone. The
+function $\mathrm{Tr}(w,s)$ on fresh variables, with $s=\mathrm{round}(2^w\ln2)$. Call the result $F_w$; it is monotone. The
 tribes function
 has mean $\mu_w=2(1-2^{-w})^s-1$, and $\mu_w\to0$ as $w\to\infty$. The expansion of Section~\ref{sec:biased} applies with $x$ kept
 as a block of its own, expanded in the uniform basis, and each $y_j$ expanded in the $\mu_w$-biased basis. Whether
 $x\in U$ depends only on the first stage of the draw, so by homogeneity of $\Lambda$ the quantities $E_x(F_w)$ and
 $\Inf_x(F_w)$ are those of $F$ computed in this mixed basis. They are continuous in $\mu_w$, and therefore converge to
 $E_x(F)$ and $\Inf_x(F)=2^{-k}$. A leaf $v$ in block $j$ is pivotal for $F_w$ exactly when it is pivotal for its copy
-of $T(w,s)$ and $y_j$ is pivotal for $F$, and the two events are independent. Hence
-$\Inf_v(F_w)\le\Inf_v(T(w,s))=2^{1-w}(1-2^{-w})^{s-1}\le2^{1-w}$. There are $kws<kw2^w$ leaves, so they contribute at
+of $\mathrm{Tr}(w,s)$ and $y_j$ is pivotal for $F$, and the two events are independent. Hence
+$\Inf_v(F_w)\le\Inf_v(\mathrm{Tr}(w,s))=2^{1-w}(1-2^{-w})^{s-1}\le2^{1-w}$. There are $kws<kw2^w$ leaves, so they contribute at
 most $kw2^w\cdot2^{(1-w)(1+a)}=2^{1+a}kw2^{-aw}$ to the right side of~\eqref{eq:power}, and this tends to $0$. The left
 side is at least $\Inf_x(F_w)^aE_x(F_w)$, since every term is nonnegative. Therefore the quotient of the two sides
 tends to at least $E_x(F)/\Inf_x(F)$ as $w\to\infty$, and by Proposition~\ref{prop:maxinf} this is unbounded in $k$.
@@ -517,7 +518,7 @@ tends to at least $E_x(F)/\Inf_x(F)$ as $w\to\infty$, and by Proposition~\ref{pr
 
 The proof for $a>0$ fails at $a=0$, where the leaves contribute $kws2^{1-w}(1-2^{-w})^{s-1}\sim kw\ln2$ to the right
 side. Majority blocks, as in Proposition~\ref{prop:maxinf}, only reach $a>1$, because the leaf influences of
-$\mathrm{Maj}_b$ sum to order $\sqrt b$ while those of $T(w,s)$ sum to order $w$. The proposition excludes uniform
+$\mathrm{Maj}_b$ sum to order $\sqrt b$ while those of $\mathrm{Tr}(w,s)$ sum to order $w$. The proposition excludes uniform
 averaging of the ratios ($a=-1$) and inverse-influence weights. Among power weights only $a=0$ remains, and that case
 is the monotone conjecture in the form $\sum_iE_i\le C\,I$. The same construction excludes the weights
 $\Inf_i\,g(\Inf_i)$ for every $g$ with $g(t)\log(1/t)\to0$ as $t\to0$: the leaf influences of $F_w$ are of order
@@ -588,7 +589,7 @@ The paper is part of the Math Brain project, whose public repository is
 \appendix
 \section{Notation}\label{app:notation}
 
-Symbols are listed in the order in which they first appear, and the last column gives that place. The letters $k$, $s$ and $T$, and the gate names of Section~\ref{sec:towers}, are reused with different meanings in
+Symbols are listed in the order in which they first appear, and the last column gives that place. The letters $k$ and $s$, and the gate names of Section~\ref{sec:towers}, are reused with different meanings in
 different sections; the meaning column says where each meaning holds.
 
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.19\textwidth}>{\raggedright\arraybackslash}p{0.54\textwidth}>{\raggedright\arraybackslash}p{0.2\textwidth}@{}}
@@ -616,8 +617,8 @@ $(\mu,P,e,I)$ & the state of a leaf $i$ in $h$: mean of $h$, $\hat h(\{i\})^2$, 
 $W_j$ & the $\mu$-biased influence $\sum_{T\ni j}\hat g_\mu(T)^2$ of input $j$ on $g$ & Theorem~\ref{thm:comp} \\
 $M$, $D$ & the perfect-matching function of $K_{3,3}$ on its nine edges, and its dual & Section~\ref{sec:towers} \\
 $N$, $N^\ast$ & the perfect-matching function of $K_{4,4}$, and its dual & Section~\ref{sec:towers} \\
-$T(w,s)$, $T(w,s)^\ast$ & the tribes function, an OR of $s$ disjoint ANDs of $w$ variables each, and its dual; used in Sections~\ref{sec:towers} and~\ref{sec:neg} & Section~\ref{sec:towers} \\
-$Q_2$, $R^\ast$ & $T(2,2)^\ast$, and the dual of the function on the edges of $K_4$ true when two opposite edges are present & Section~\ref{sec:towers} \\
+$\mathrm{Tr}(w,s)$, $\mathrm{Tr}(w,s)^\ast$ & the tribes function, an OR of $s$ disjoint ANDs of $w$ variables each, and its dual; used in Sections~\ref{sec:towers} and~\ref{sec:neg} & Section~\ref{sec:towers} \\
+$Q_2$, $R^\ast$ & $\mathrm{Tr}(2,2)^\ast$, and the dual of the function on the edges of $K_4$ true when two opposite edges are present & Section~\ref{sec:towers} \\
 $\delta$ & the parameter of the $\delta$-tribes functions of~\cite{GMP}; in Section~\ref{sec:classes}, the influence $\Inf_i(f)$ of the coordinate under study & Section~\ref{sec:intro} \\
 $\varepsilon$ & $2^{-k}$, in the constructions of Proposition~\ref{prop:middle} and after & Section~\ref{sec:neg} \\
 $p_T$, $q_T$ & $\hat f(T)^2$ and $\hat f(T\cup\{i\})^2$ for $T\not\ni i$ & Section~\ref{sec:classes} \\
@@ -632,7 +633,7 @@ $\alpha$, $\beta$, $s$ & $a_l/d_l$, $(1-b_l)/d_l$ and $1+\alpha+\beta$ in the pr
 $\psi$, $\Omega$, $\Theta$ & $\psi(t)=\Phi(2t+1)$ and the potential functions of the proof of Theorem~\ref{thm:readonce} & Section~\ref{sec:classes} \\
 $k$, $m$ & $k=2m+1$, the number of variables of $\mathrm{Maj}$ & Section~\ref{sec:neg} \\
 $\mathrm{Maj}$, $\mathrm{Maj}_b$ & majority on $k$ (respectively $b$) variables, value $-1$ when true & Section~\ref{sec:neg} \\
-$s$ & the size $|T|$ of an odd set $T\subseteq[k]$; in the proof for $a>0$, the number of terms of $T(w,s)$ & Section~\ref{sec:neg} \\
+$s$ & the size $|T|$ of an odd set $T\subseteq[k]$; in the proof for $a>0$, the number of terms of $\mathrm{Tr}(w,s)$ & Section~\ref{sec:neg} \\
 $F$, $A$ & the function built in each construction, and an $m$-subset of $[k]$ & Section~\ref{sec:neg} \\
 $J$ & $\mathbf 1[|y|=m]$ in the proof of Proposition~\ref{prop:middle} & Section~\ref{sec:neg} \\
 $\rho$, $\hat\rho(T)$ & $\mathrm{Maj}-\mathbf 1[|y|=m]$ in Proposition~\ref{prop:middle} and its Fourier coefficients & Section~\ref{sec:neg} \\
