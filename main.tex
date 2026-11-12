@@ -28,8 +28,8 @@ distribution $\hat f^2$. The Fourier entropy-influence conjecture holds if and o
 $\G=\sup_f\min_i E_i(f)/\Inf_i(f)$ is finite, and then its constant lies between $\G$ and $\G+2/\ln 2$. We study $\G$
 directly. A composition identity computes $E_i$ and $\Inf_i$ for iterated block compositions $g(h,\dots,h)$ exactly
 from the biased spectrum of $g$, and towers of transitive monotone gates give $\G_{\mathrm{mon}}\ge 4.50642846$,
-where $\G_{\mathrm{mon}}$ is the supremum over monotone functions. On the other side we show that every width-$w$ DNF
-has a coordinate with $E_i/\Inf_i\le 2+\log_2 e+\log_2(2^{w+1}-1)$, with no monotonicity or read restriction, and
+where $\G_{\mathrm{mon}}$ is the supremum over monotone functions. On the other side we show that every width-$w$ formula
+in disjunctive normal form has a coordinate with $E_i/\Inf_i\le 2+\log_2 e+\log_2(2^{w+1}-1)$, with no monotonicity or read restriction, and
 that every relevant leaf of a read-once AND/OR formula has $E_i/\Inf_i<\pi/\ln 2$, which is sharp. Finally we show
 that the coordinate of largest influence is not a valid selection rule, and that all but a vanishing fraction of the
 coordinates of a monotone function can have $E_i/\Inf_i$ bounded below by any constant. Nor can the ratios be
@@ -82,7 +82,7 @@ When every gate is transitive on its inputs, every leaf of the tower has the sam
 $\G(f)$. Towers of the perfect matching function of $K_{3,3}$ and its dual already give $\G_{\mathrm{mon}}>4.505$;
 mixed words of six gate types give
 \[
-\G\ge\G_{\mathrm{mon}}\ge 4.5064284654452331779\ldots
+\G\ge\G_{\mathrm{mon}}\ge 4.5064284654452331779\dots
 \]
 This is below the bound $C^\ast>6.5218$, as it must be: towers are built to make one coordinate's ratio large,
 and the spectral entropy of these functions is far from extremal. The point of the bound is the other one: any
@@ -211,7 +211,7 @@ state $(0,1,0,1)$ of a single variable.
 For the words in Table~\ref{tab:towers} the iterated compositions are monotone Boolean functions with
 $\G(f)$ equal to the value shown, to the number of digits shown. In particular
 \[
-\G_{\mathrm{mon}}\ge 4.50642846544523317790928639\ldots
+\G_{\mathrm{mon}}\ge 4.50642846544523317790928639\dots
 \]
 \end{proposition}
 
@@ -247,7 +247,7 @@ $2.5\times10^{-9}$ between the last two rows. The ordering of the table is that 
 \end{remark}
 
 \begin{remark}[Where the value comes from]
-For $M$ the mean map $\mu\mapsto\hat M_\mu(\emptyset)$ has a fixed point at $\mu^\ast=-0.0349185099940\ldots$, where
+For $M$ the mean map $\mu\mapsto\hat M_\mu(\emptyset)$ has a fixed point at $\mu^\ast=-0.0349185099940\dots$, where
 its derivative is $2.0077$, so the fixed point is repelling. The bottom gate $D$ produces the mean
 $-0.03515625$, close to $\mu^\ast$, and a run of $M$ gates then keeps the mean near $\mu^\ast$ for several levels
 before it escapes; the top gates spend what is left. If the mean could be held at $\mu^\ast$ for ever, starting from
@@ -330,7 +330,7 @@ For read-once formulas a much stronger statement holds: every relevant leaf is g
 Let $f$ be a read-once formula over AND and OR with literals at the leaves. Every leaf $i$ with $\Inf_i(f)>0$
 satisfies
 \[
-\frac{E_i(f)}{\Inf_i(f)}<\frac{\pi}{\ln 2}=4.5323601418\ldots
+\frac{E_i(f)}{\Inf_i(f)}<\frac{\pi}{\ln 2}=4.5323601418\dots
 \]
 and the constant $\pi/\ln 2$ cannot be lowered: there are monotone read-once formulas and leaves with ratio
 arbitrarily close to it.
@@ -569,17 +569,13 @@ The author holds equity in Heights Labs and in Convex Nexus Capital and has a ma
 These entities are included in the funding declaration above.
 
 \section*{Declaration of generative AI and AI-assisted technologies}
-The paper comes out of Math Brain, an ongoing project on the use of AI systems for research mathematics, and its
-results were developed with the Brain~\cite{BrainFramework} and Math Brain~\cite{MathBrainRepo}. In November 2026 a
-Claude Fable agent (Anthropic), connected to the Brain, studied the one-coordinate constant and its composition towers
-and directed Codex agents running OpenAI's GPT-6.1 on the same problem. The Codex agents ran the tower searches and the
-exhaustive search over $K_{3,3}$-invariant bases, and proposed the width bound, the read-once bound and the negative
-examples of Sections~4 and~5. A second Claude agent found the tower of Table~1 with the largest value and the pinned-mean
-limit, and a third gave the tribes substitution that extends the power-weight result to $0<a\le1$ and the majority
-lift for slowly varying weights. Claude Opus 5.5 (Anthropic) searched the literature, wrote the proofs in their present form, recomputed every
-tower in Table~1 and checked every numerical claim with independent code, prepared the manuscript and audited it. These
-checks are not peer review. The author directed the work and is responsible for the content of the paper and for
-decisions concerning its dissemination.
+The paper comes out of Math Brain, a project on the use of AI systems in research
+mathematics~\cite{BrainFramework,MathBrainRepo}. Codex agents running OpenAI's GPT-6.1 ran the tower searches and the
+search over $K_{3,3}$-invariant bases, and proposed the bounds of Section~\ref{sec:classes} and the examples of
+Section~\ref{sec:neg}. Claude agents (Anthropic: Fable and Opus~5.5) found the largest tower of
+Table~\ref{tab:towers}, the pinned-mean limit and the extensions of the power-weight result, wrote the proofs in their
+present form, checked every computation with independent code and prepared the manuscript. The author directed the
+work and is responsible for the content of the paper.
 
 \section*{Code and data availability}
 \url{https://github.com/yspennstate/fei-good-coordinates}
