@@ -528,23 +528,23 @@ least a constant times the variance.
 
 Weights that vary slowly give nothing easier. Let $g>0$ be slowly varying at $0$, that is $g(ct)/g(t)\to1$ as $t\to0$
 for every $c>0$~\cite{BGT}; this includes the constants and $\log(1/t)^{-b}$ for every $b$. If
-$\sum_ig(\Inf_i(f))E_i(f)\le C\sum_ig(\Inf_i(f))\Inf_i(f)$ for all monotone $f$, then $\sum_iE_i(\varphi)\le C\,I(\varphi)$
-for every balanced monotone $\varphi$. To see this, let $b$ be odd and $h=\mathrm{Maj}_b(\varphi(x^1),\dots,\varphi(x^b))$ on
-disjoint blocks. Since $\hat\varphi(\emptyset)=0$, $\hat h$ at a frequency with nonempty parts $S_j$, $j\in T$, is
-$\hat{\mathrm{Maj}_b}(T)\prod_{j\in T}\hat\varphi(S_j)$. For a leaf $i$ of block $j$, the pairs $(S,S\cup\{i\})$ with
-$S\ne\emptyset$ in block $j$ keep $T$, and by homogeneity of $\Lambda$ they give $\tau_bE_i(\varphi)$, where
+$\sum_ig(\Inf_i(f))E_i(f)\le C\sum_ig(\Inf_i(f))\Inf_i(f)$ for all monotone $f$, then $\sum_iE_i(\zeta)\le C\,I(\zeta)$
+for every balanced monotone $\zeta$. To see this, let $b$ be odd and $h=\mathrm{Maj}_b(\zeta(x^1),\dots,\zeta(x^b))$ on
+disjoint blocks. Since $\hat\zeta(\emptyset)=0$, $\hat h$ at a frequency with nonempty parts $S_j$, $j\in T$, is
+$\hat{\mathrm{Maj}_b}(T)\prod_{j\in T}\hat\zeta(S_j)$. For a leaf $i$ of block $j$, the pairs $(S,S\cup\{i\})$ with
+$S\ne\emptyset$ in block $j$ keep $T$, and by homogeneity of $\Lambda$ they give $\tau_bE_i(\zeta)$, where
 $\tau_b=\binom{b-1}{(b-1)/2}2^{1-b}$ is the influence of a coordinate of $\mathrm{Maj}_b$. The pair
 $(\emptyset,\{i\})$ changes $|T|$ by one, so one of its two coefficients vanishes, because $\mathrm{Maj}_b$ has
-weight only on odd sets. Hence $E_{(j,i)}(h)=\tau_bE_i(\varphi)$ and $\Inf_{(j,i)}(h)=\tau_b\Inf_i(\varphi)$, and
+weight only on odd sets. Hence $E_{(j,i)}(h)=\tau_bE_i(\zeta)$ and $\Inf_{(j,i)}(h)=\tau_b\Inf_i(\zeta)$, and
 \[
 \frac{\sum_vg(\Inf_v(h))E_v(h)}{\sum_vg(\Inf_v(h))\Inf_v(h)}
-=\frac{\sum_ig(\tau_b\Inf_i(\varphi))E_i(\varphi)}{\sum_ig(\tau_b\Inf_i(\varphi))\Inf_i(\varphi)}\longrightarrow\frac{\sum_iE_i(\varphi)}{I(\varphi)}
+=\frac{\sum_ig(\tau_b\Inf_i(\zeta))E_i(\zeta)}{\sum_ig(\tau_b\Inf_i(\zeta))\Inf_i(\zeta)}\longrightarrow\frac{\sum_iE_i(\zeta)}{I(\zeta)}
 \]
-as $b\to\infty$, since $g(\tau_b\Inf_i)/g(\tau_b)\to1$ for each of the finitely many $i$ with $\Inf_i(\varphi)>0$; and $h$
-is monotone. The convergence is slow. For $\varphi=x_1x_2\vee x_2x_3\vee x_1x_4$ and $g(t)=1/\ln(1/t)$ the weighted
-quotient is $1.1610$ for $\varphi$, $1.2012$ at $b=3$, $1.2346$ at $b=101$ and $1.2533$ at $b=10^6+1$, against
-$\sum_iE_i(\varphi)/I(\varphi)=1.2683$. The argument needs $\hat\varphi(\emptyset)=0$. For biased $\varphi$ the pair
-$(\emptyset,\{i\})$ of $\varphi$ is not carried into $h$, and $\mathrm{Maj}_b$ in the biased basis has weight on even sets,
+as $b\to\infty$, since $g(\tau_b\Inf_i)/g(\tau_b)\to1$ for each of the finitely many $i$ with $\Inf_i(\zeta)>0$; and $h$
+is monotone. The convergence is slow. For $\zeta=x_1x_2\vee x_2x_3\vee x_1x_4$ and $g(t)=1/\ln(1/t)$ the weighted
+quotient is $1.1610$ for $\zeta$, $1.2012$ at $b=3$, $1.2346$ at $b=101$ and $1.2533$ at $b=10^6+1$, against
+$\sum_iE_i(\zeta)/I(\zeta)=1.2683$. The argument needs $\hat\zeta(\emptyset)=0$. For biased $\zeta$ the pair
+$(\emptyset,\{i\})$ of $\zeta$ is not carried into $h$, and $\mathrm{Maj}_b$ in the biased basis has weight on even sets,
 so the two sides no longer scale together.
 
 \begin{remark}
@@ -640,7 +640,7 @@ $\rho$, $\hat\rho(T)$ & $\mathrm{Maj}-\mathbf 1[|y|=m]$ in Proposition~\ref{prop
 $a$ & the exponent of the influence weights in~\eqref{eq:power} & Section~\ref{sec:neg} \\
 $v$ & a leaf of $F_w$ in the proof for $a>0$ & Section~\ref{sec:neg} \\
 $\mathcal L$ & the Laplacian, $\mathcal L\chi_T=|T|\chi_T$ & Section~\ref{sec:neg} \\
-$\varphi$, $\hat\varphi$ & a balanced monotone function and its Fourier coefficients, in the argument for slowly varying weights & Section~\ref{sec:neg} \\
+$\zeta$, $\hat\zeta$ & a balanced monotone function and its Fourier coefficients, in the argument for slowly varying weights & Section~\ref{sec:neg} \\
 $\tau_b$ & $\binom{b-1}{(b-1)/2}2^{1-b}$, the influence of a coordinate of $\mathrm{Maj}_b$ & Section~\ref{sec:neg} \\
 \bottomrule
 \end{longtable}
