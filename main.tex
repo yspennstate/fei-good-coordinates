@@ -268,8 +268,8 @@ $p_T=\hat f(T)^2$ and $q_T=\hat f(T\cup\{i\})^2$. Conditioning on $U\setminus\{i
 E_i(f)=\sum_{T\not\ni i}m(p_T,q_T),\qquad \Inf_i(f)=\sum_{T\not\ni i}q_T .
 \end{equation}
 The function $m$ is concave, increasing in each argument and homogeneous of degree one, hence superadditive:
-$\sum_T m(a_T,b_T)\le m(\sum_Ta_T,\sum_Tb_T)$. Write $g=\E_if$ and $h=\mathrm D_if$, so that $f=g+x_ih$,
-$p_T=\hat g(T)^2$ and $q_T=\hat h(T)^2$; since $h$ takes values in $\{-1,0,1\}$, $\sum_Tq_T=\E h^2=\delta$.
+$\sum_T m(a_T,b_T)\le m(\sum_Ta_T,\sum_Tb_T)$. Write $\xi=\E_if$ and $\eta=\mathrm D_if$, so that $f=\xi+x_i\eta$,
+$p_T=\hat \xi(T)^2$ and $q_T=\hat \eta(T)^2$; since $\eta$ takes values in $\{-1,0,1\}$, $\sum_Tq_T=\E \eta^2=\delta$.
 
 \begin{lemma}\label{lem:var}
 For every Boolean $f$ and every coordinate $i$ with $\delta=\Inf_i(f)>0$,
@@ -280,7 +280,7 @@ For every Boolean $f$ and every coordinate $i$ with $\delta=\Inf_i(f)>0$,
 
 \begin{proof}
 For $t\in[0,1]$ one has $h_2(t)\le 2\sqrt{t(1-t)}$, so $m(a,b)\le 2\sqrt{ab}$. The term $T=\emptyset$ is therefore at
-most $2\sqrt{q_\emptyset}=2|\E h|\le 2\delta$. For the others, $\sum_{T\ne\emptyset}p_T=\mathrm{Var}(g)\le\mathrm{Var}(f)=V$
+most $2\sqrt{q_\emptyset}=2|\E \eta|\le 2\delta$. For the others, $\sum_{T\ne\emptyset}p_T=\mathrm{Var}(\xi)\le\mathrm{Var}(f)=V$
 and $\sum_{T\neq\emptyset}q_T\le\delta$, so by superadditivity and monotonicity
 \[
 \sum_{T\ne\emptyset}m(p_T,q_T)\le m(V,\delta)=V\log_2\Bigl(1+\frac{\delta}{V}\Bigr)+\delta\log_2\Bigl(1+\frac V\delta\Bigr)
@@ -353,11 +353,11 @@ $R_r=\sum_{l<r}c_l(1-p_l)/P_l-c_r/P_{r-1}$ and $R_\infty=\sum_{l\le L}c_l(1-p_l)
 \end{lemma}
 
 \begin{proof}
-Unrolling the recursion, $h=\mathrm D_if=\prod_lZ_l$ and $g=\E_if=\sum_lc_l(1-Z_l)\prod_{j>l}Z_j$. A frequency
-$S\not\ni i$ splits into block parts $S_l$, and $\hat h(S)=\prod_l\hat Z_l(S_l)$ with $\hat Z_l(\emptyset)=p_l$. If
-$r$ is the first $l$ with $S_l\ne\emptyset$, only the terms $l\le r$ of $g$ contribute, and
-$\hat g(S)=R_r\hat h(S)$; if all $S_l$ are empty, $\hat g(S)=R_\infty\hat h(S)$. By homogeneity
-$m(p_S,q_S)=q_S\Phi(\hat g(S)/\hat h(S))$ when $\hat h(S)\ne0$, and $m(p_S,0)=0$. Under the law $q_S/\delta$ the blocks
+Unrolling the recursion, $\eta=\mathrm D_if=\prod_lZ_l$ and $\xi=\E_if=\sum_lc_l(1-Z_l)\prod_{j>l}Z_j$. A frequency
+$S\not\ni i$ splits into block parts $S_l$, and $\hat \eta(S)=\prod_l\hat Z_l(S_l)$ with $\hat Z_l(\emptyset)=p_l$. If
+$r$ is the first $l$ with $S_l\ne\emptyset$, only the terms $l\le r$ of $\xi$ contribute, and
+$\hat \xi(S)=R_r\hat \eta(S)$; if all $S_l$ are empty, $\hat \xi(S)=R_\infty\hat \eta(S)$. By homogeneity
+$m(p_S,q_S)=q_S\Phi(\hat \xi(S)/\hat \eta(S))$ when $\hat \eta(S)\ne0$, and $m(p_S,0)=0$. Under the law $q_S/\delta$ the blocks
 are independent, block $l$ is empty with probability $p_l$, so the first nonempty block is $r$ with probability
 $P_{r-1}-P_r$ and none is nonempty with probability $\delta$. Now apply~\eqref{eq:erasure}.
 \end{proof}
@@ -477,10 +477,10 @@ and $\Phi(u)\ge\log_2(1+u^2)$, as before.
 \end{proof}
 
 So all but $k$ of the $k+\binom km$ coordinates have unbounded ratio. The $k$ base coordinates stay good. With
-$r=\binom km$ and $\delta=2^{-k}$, a base coordinate $y_1$ has influence $r\delta$. A frequency containing one hidden
+$r=\binom km$ and $\varepsilon=2^{-k}$, a base coordinate $y_1$ has influence $r\varepsilon$. A frequency containing one hidden
 variable $z_B$ has coefficient $\pm2^{-k}\chi_T(1_B)$ at $T\cup\{z_B\}$, $T\subseteq[k]$, so the pairs $T$,
-$T\cup\{1\}$ have equal squares $4^{-k}$, and since $m(c,c)=2c$ these frequencies contribute exactly $r\delta$ to
-$E_{y_1}$. The remaining frequencies give $E_{y_1}(a)$, so the ratio of $y_1$ is $1+E_{y_1}(a)/(r\delta)$, which
+$T\cup\{1\}$ have equal squares $4^{-k}$, and since $m(c,c)=2c$ these frequencies contribute exactly $r\varepsilon$ to
+$E_{y_1}$. The remaining frequencies give $E_{y_1}(a)$, so the ratio of $y_1$ is $1+E_{y_1}(a)/(r\varepsilon)$, which
 is $2.14$ at $k=17$. At $k=17$ the hidden ratio is $14.45$, against $\log_2\binom{17}8=14.57$.
 
 \subsection{Power weights}
@@ -495,9 +495,9 @@ For every $a\ne0$ there is no $C$ for which~\eqref{eq:power} holds for all monot
 \end{proposition}
 
 \begin{proof}
-For $a<0$ take $F$ of Proposition~\ref{prop:middle}, with $r=\binom km$ and $\delta=2^{-k}$. The hidden coordinates
-contribute $r\delta^{a+1}$ to the right side and the base coordinates $k(r\delta)^{a+1}$, a fraction $kr^a\to0$ of it.
-The left side is at least $r\delta^{a}E_{z_A}$, so the quotient is at least $(E_{z_A}/\delta)/(1+kr^a)\to\infty$.
+For $a<0$ take $F$ of Proposition~\ref{prop:middle}, with $r=\binom km$ and $\varepsilon=2^{-k}$. The hidden coordinates
+contribute $r\varepsilon^{a+1}$ to the right side and the base coordinates $k(r\varepsilon)^{a+1}$, a fraction $kr^a\to0$ of it.
+The left side is at least $r\varepsilon^{a}E_{z_A}$, so the quotient is at least $(E_{z_A}/\varepsilon)/(1+kr^a)\to\infty$.
 For $a>0$ let $F(x,y)=\mathrm{Maj}(y)\vee(x\wedge\bigwedge_{j\in A}y_j)$ be the function in the proof of
 Proposition~\ref{prop:maxinf}, before the majority substitution, and replace each $y_j$ by a copy of the tribes
 function $T(w,s)$ on fresh variables, with $s=\mathrm{round}(2^w\ln2)$. Call the result $F_w$; it is monotone. The
@@ -587,8 +587,7 @@ The paper is part of the Math Brain project, whose public repository is
 \appendix
 \section{Notation}\label{app:notation}
 
-Symbols are listed in the order in which they first appear, and the last column gives that place. The letters $g$,
-$h$, $k$, $s$, $T$ and $\delta$, and the gate names of Section~\ref{sec:towers}, are reused with different meanings in
+Symbols are listed in the order in which they first appear, and the last column gives that place. The letters $k$, $s$ and $T$, and the gate names of Section~\ref{sec:towers}, are reused with different meanings in
 different sections; the meaning column says where each meaning holds. Without arguments, $m$ denotes an integer; with two arguments it is the
 function $m(a,b)$.
 
@@ -619,10 +618,11 @@ $M$, $D$ & the perfect-matching function of $K_{3,3}$ on its nine edges, and its
 $P$, $P^\ast$ & the perfect-matching function of $K_{4,4}$, and its dual & Section~\ref{sec:towers} \\
 $T(w,s)$, $T(w,s)^\ast$ & the tribes function, an OR of $s$ disjoint ANDs of $w$ variables each, and its dual; used in Sections~\ref{sec:towers} and~\ref{sec:neg} & Section~\ref{sec:towers} \\
 $Q_2$, $R^\ast$ & $T(2,2)^\ast$, and the dual of the function on the edges of $K_4$ true when two opposite edges are present & Section~\ref{sec:towers} \\
-$\delta$ & the parameter of the $\delta$-tribes functions of~\cite{GMP}; in Section~\ref{sec:classes}, the influence $\Inf_i(f)$ of the coordinate under study; in Section~\ref{sec:neg}, $2^{-k}$ & Section~\ref{sec:intro} \\
+$\delta$ & the parameter of the $\delta$-tribes functions of~\cite{GMP}; in Section~\ref{sec:classes}, the influence $\Inf_i(f)$ of the coordinate under study & Section~\ref{sec:intro} \\
+$\varepsilon$ & $2^{-k}$, in the constructions of Proposition~\ref{prop:middle} and after & Section~\ref{sec:neg} \\
 $p_T$, $q_T$ & $\hat f(T)^2$ and $\hat f(T\cup\{i\})^2$ for $T\not\ni i$ & Section~\ref{sec:classes} \\
 $\E_if$, $\mathrm D_if$ & $\tfrac12(f_{i\to1}+f_{i\to-1})$ and $\tfrac12(f_{i\to1}-f_{i\to-1})$, so that $f=\E_if+x_i\mathrm D_if$; used in Sections~\ref{sec:classes} and~\ref{sec:neg} & Section~\ref{sec:classes} \\
-$g$, $h$ & $\E_if$ and $\mathrm D_if$ & Section~\ref{sec:classes} \\
+$\xi$, $\eta$ & $\E_if$ and $\mathrm D_if$ & Section~\ref{sec:classes} \\
 $\mathrm{Var}(f)$, $V$ & the variance of $f$; $V$ in Theorem~\ref{thm:width} & Section~\ref{sec:intro} \\
 $\Phi$ & $\Phi(u)=m(u^2,1)$; used in Sections~\ref{sec:classes} and~\ref{sec:neg} & Lemma~\ref{lem:path} \\
 $L$ & the number of gates on the path from a leaf to the root & Theorem~\ref{thm:readonce} \\
