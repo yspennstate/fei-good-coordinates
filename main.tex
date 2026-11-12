@@ -45,7 +45,8 @@ Let $f:\{-1,1\}^n\to\{-1,1\}$ have Fourier expansion $f=\sum_S\hat f(S)\chi_S$, 
 $\Pr[U=S]=\hat f(S)^2$. The spectral entropy of $f$ is $H(f)=H(U)$ and the influence of $i$ is
 $\Inf_i(f)=\Pr[i\in U]$. The Fourier entropy-influence (FEI) conjecture of Friedgut and Kalai~\cite{FK} asserts
 that $H(f)\le C\sum_i\Inf_i(f)$ for a universal constant $C$; let $C^\ast$ be the least such constant, $C^\ast=\infty$
-if there is none. The conjecture is known for several classes~\cite{OWZ,CKLS,KMS,WWW14,Pot26} and with a
+if there is none. The conjecture is known for several classes~\cite{OWZ,CKLS,KMS,WWW14,Pot26}, among them the linear threshold
+functions~\cite{ShmLTF}, and with a
 $\log$-type loss in general~\cite{Han,KMS}; Kelman, Kindler, Lifshitz, Minzer and Safra~\cite{KKLMS} prove a weaker
 form, that the spectrum of a Boolean function of constant variance is concentrated on $2^{O(\mathrm I(f)\log\mathrm
 I(f))}$ characters. The largest known lower bound is $C^\ast>6.5218$, from an explicit balanced monotone function on $18$ variables~\cite{Num26} through the amplification $C^\ast\ge H(g)/(\mathrm I(g)-1)$ of O'Donnell and Tan~\cite{OT13}; it improves the bounds $6.278$~\cite{OT13}, $6.4548$~\cite{Hod}, $6.4901$ and $6.5143$~\cite{MI26a,MI26b} (the records are collected in~\cite{TaoC}).
@@ -312,8 +313,11 @@ same $E_i$ and $\Inf_i$.
 Width is preserved by restriction, so the induction of~\cite{Shm2} turns Theorem~\ref{thm:width} into
 $H(f)\le(w+3+3\log_2e)\,\mathrm I(f)$ for width-$w$ DNFs and CNFs. The argument has the same shape as the
 coordinate choice of~\cite[Section~5.2]{GMP}: a variable inside a short term sees a positive fraction of the
-variance. For comparison, Han~\cite{Han} proves $H(f)=O\bigl(\mathrm I(f)+\sum_i\Inf_i(f)\log(1/\Inf_i(f))\bigr)$
-for every $f$, and Arunachalam, Chakraborty, Kouck\'y, Saurabh and de Wolf~\cite{ACKSW} bound $H(f)$ by twice the
+variance. For comparison, Han~\cite{Han} proves
+\[
+H(f)\le\Bigl(2+\frac{3}{\ln 2}\Bigr)\mathrm I(f)+\sum_i\Inf_i(f)\log_2\frac{1}{\Inf_i(f)}
+\]
+for every $f$, Li and Han~\cite{LH25} lower the constant $2+3/\ln 2$ to the sharp value $1/\ln 2$, and Arunachalam, Chakraborty, Kouck\'y, Saurabh and de Wolf~\cite{ACKSW} bound $H(f)$ by twice the
 average unambiguous parity-certificate complexity.
 
 \subsection{Read-once formulas}
@@ -601,6 +605,8 @@ arXiv:1711.00762, 2017.
 Fourier-entropy conjecture?, Geom. Funct. Anal. 30 (2020), 1097--1138.
 \bibitem{KMS} N.~Keller, E.~Mossel, T.~Schlank, A note on the entropy/influence conjecture, Discrete Math. 312
 (2012), 3364--3372.
+\bibitem{LH25} P.~Li, G.~Han, Strengthening Han's Fourier entropy-influence inequality via an
+information-theoretic proof, arXiv:2512.03117, 2025.
 \bibitem{MathBrainPaper} Y.~Shmalo, \emph{Math Brain: shared, auditable memory for multi-agent mathematical research},
 October 2026, \url{https://github.com/yspennstate/math-brain-public/tree/main/papers/math-brain-2026-10-24}.
 \bibitem{MathBrainRepo} Y.~Shmalo, \emph{Math Brain: public snapshot, code and tests}, 2026,
@@ -619,6 +625,8 @@ arXiv:2609.21563, 2026.
 \url{https://github.com/yspennstate/han-question-read-once-formulas}, 2026.
 \bibitem{Shm2} Y.~Shmalo, The one-coordinate step in the Fourier entropy-influence conjecture,
 \url{https://github.com/yspennstate/fourier-entropy-influence-one-coordinate}, 2026.
+\bibitem{ShmLTF} Y.~Shmalo, Fourier entropy of threshold functions and their compositions,
+arXiv:2610.16069, 2026.
 \bibitem{Tal} M.~Talagrand, On Russo's approximate zero-one law, Ann. Probab. 22 (1994), 1576--1587.
 \bibitem{TaoC} T.~Tao et al., Optimization constants in mathematics, constant $C_{71}$, \url{https://github.com/teorth/optimizationproblems}, 2026.
 \bibitem{WWW14} A.~Wan, J.~Wright, C.~Wu, Decision trees, protocols, and the Fourier entropy-influence conjecture,
