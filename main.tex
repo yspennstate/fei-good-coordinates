@@ -1,6 +1,7 @@
 \documentclass[11pt]{amsart}
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage[margin=1.1in]{geometry}
+\usepackage{array,longtable,booktabs}
 \usepackage{hyperref}
 
 \newtheorem{theorem}{Theorem}[section]
@@ -583,6 +584,65 @@ decisions concerning its dissemination.
 
 The paper is part of the Math Brain project, whose public repository is
 \url{https://github.com/yspennstate/math-brain-public}~\cite{MathBrainRepo}.
+
+\appendix
+\section{Notation}\label{app:notation}
+
+Symbols are listed in the order in which they first appear. The letters $g$, $h$, $k$, $s$, $T$ and $\delta$, and the
+gate names of Section~\ref{sec:towers}, are reused with different meanings in different sections; the last column gives
+the section in which each meaning holds. Without arguments, $m$ denotes an integer; with two arguments it is the
+function $m(a,b)$.
+
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.19\textwidth}>{\raggedright\arraybackslash}p{0.54\textwidth}>{\raggedright\arraybackslash}p{0.2\textwidth}@{}}
+\toprule
+Symbol & Meaning & Where \\
+\midrule
+\endhead
+$f$ & a Boolean function $\{-1,1\}^n\to\{-1,1\}$ & throughout \\
+$\hat f(S)$, $\chi_S$ & the Fourier coefficient of $f$ at $S\subseteq[n]$, and the character $\prod_{i\in S}x_i$ & throughout \\
+$U$ & the spectral sample, a random set with $\Pr[U=S]=\hat f(S)^2$ & throughout \\
+$H(f)$ & the spectral entropy $H(U)$, in bits & throughout \\
+$\Inf_i(f)$ & the influence of $i$, $\Pr[i\in U]$ & throughout \\
+$\mathrm I(f)$ & the total influence $\sum_i\Inf_i(f)$ & throughout \\
+$C^\ast$ & the least constant $C$ with $H(f)\le C\,\mathrm I(f)$ for all $f$ & throughout \\
+$E_i(f)$ & the conditional entropy $H(\mathbf 1[i\in U]\mid U\setminus\{i\})$ & throughout \\
+$\G(f)$, $\G$ & $\min_{i:\Inf_i(f)>0}E_i(f)/\Inf_i(f)$, and its supremum over all nonconstant Boolean $f$ & throughout \\
+$\G_{\mathrm{mon}}$ & the supremum of $\G(f)$ over monotone $f$ & throughout \\
+$\mu$, $\sigma$, $\phi_\mu$ & a mean in $(-1,1)$, $\sigma=\sqrt{1-\mu^2}$, and $\phi_\mu(y)=(y-\mu)/\sigma$ & Section~\ref{sec:comp} \\
+$\hat g_\mu(T)$ & the $\mu$-biased Fourier coefficient of a gate $g$ at $T\subseteq[k]$ & Sections~\ref{sec:comp}, \ref{sec:towers} \\
+$g$, $h$, $k$ & a gate on $k$ inputs and the inner function, in the composition $f=g(h,\dots,h)$ & Sections 1 to \ref{sec:towers} \\
+$A_l$, $B$ & a nonempty subset of block $l$; and $U\setminus\{i\}$ in~\eqref{eq:Esplit} & Section~\ref{sec:comp} \\
+$h_2$ & the binary entropy $h_2(p)=-p\log_2p-(1-p)\log_2(1-p)$ & throughout \\
+$m(a,b)$ & the unnormalised two-point entropy $(a+b)\,h_2\bigl(b/(a+b)\bigr)$, with $m(0,0)=0$ & throughout \\
+$(\mu,P,e,I)$ & the state of a leaf $i$ in $h$: mean of $h$, $\hat h(\{i\})^2$, the part $e(h)$ of $E_i(h)$ over nonempty $U\setminus\{i\}$, and $\Inf_i(h)$ & Section~\ref{sec:comp} \\
+$W_j$ & the $\mu$-biased influence $\sum_{T\ni j}\hat g_\mu(T)^2$ of input $j$ on $g$ & Theorem~\ref{thm:comp} \\
+$M$, $D$ & the perfect-matching function of $K_{3,3}$ on its nine edges, and its dual & Section~\ref{sec:towers} \\
+$P$, $P^\ast$ & the perfect-matching function of $K_{4,4}$, and its dual & Section~\ref{sec:towers} \\
+$T(w,s)$, $T(w,s)^\ast$ & the tribes function, an OR of $s$ disjoint ANDs of $w$ variables each, and its dual & Sections~\ref{sec:towers}, \ref{sec:neg} \\
+$Q_2$, $R^\ast$ & $T(2,2)^\ast$, and the dual of the function on the edges of $K_4$ true when two opposite edges are present & Section~\ref{sec:towers} \\
+$\delta$ & the influence $\Inf_i(f)$ of the coordinate under study; in Section~\ref{sec:neg}, $2^{-k}$ & Sections~\ref{sec:classes}, \ref{sec:neg} \\
+$p_T$, $q_T$ & $\hat f(T)^2$ and $\hat f(T\cup\{i\})^2$ for $T\not\ni i$ & Section~\ref{sec:classes} \\
+$\E_if$, $\mathrm D_if$ & $\tfrac12(f_{i\to1}+f_{i\to-1})$ and $\tfrac12(f_{i\to1}-f_{i\to-1})$, so that $f=\E_if+x_i\mathrm D_if$ & Sections~\ref{sec:classes}, \ref{sec:neg} \\
+$g$, $h$ & $\E_if$ and $\mathrm D_if$ & Section~\ref{sec:classes} \\
+$\mathrm{Var}(f)$, $V$ & the variance of $f$ & Lemma~\ref{lem:var}, Theorem~\ref{thm:width} \\
+$\Phi$ & $\Phi(u)=m(u^2,1)$ & Sections~\ref{sec:classes}, \ref{sec:neg} \\
+$L$ & the number of gates on the path from a leaf to the root & Section~\ref{sec:classes} \\
+$Z_l$, $p_l$, $c_l$, $P_l$ & along the path from a leaf to the root: the event that gate $l$ passes the path child, its probability, the output when blocked, and $p_1\cdots p_l$ & Lemma~\ref{lem:path} \\
+$R_r$, $R_\infty$ & the sums defined in Lemma~\ref{lem:path} & Lemma~\ref{lem:path} \\
+$\alpha$, $\beta$, $s$ & $a_l/d_l$, $(1-b_l)/d_l$ and $1+\alpha+\beta$ in the proof of Theorem~\ref{thm:readonce} & Section~\ref{sec:classes} \\
+$\psi$, $W$, $V$ & $\psi(t)=\Phi(2t+1)$ and the potential functions of the proof of Theorem~\ref{thm:readonce} & Section~\ref{sec:classes} \\
+$k$, $m$ & $k=2m+1$, the number of variables of $\mathrm{Maj}$ & Section~\ref{sec:neg} \\
+$\mathrm{Maj}$, $\mathrm{Maj}_b$ & majority on $k$ (respectively $b$) variables, value $-1$ when true & Section~\ref{sec:neg} \\
+$s$ & the size $|T|$ of an odd set $T\subseteq[k]$; in the proof for $a>0$, the number of terms of $T(w,s)$ & Section~\ref{sec:neg} \\
+$F$, $A$ & the function built in each construction, and an $m$-subset of $[k]$ & Section~\ref{sec:neg} \\
+$L$ & $\mathbf 1[|y|=m]$ in the proof of Proposition~\ref{prop:middle} & Section~\ref{sec:neg} \\
+$a$, $\hat a(T)$ & $\mathrm{Maj}-\mathbf 1[|y|=m]$ in Proposition~\ref{prop:middle} and its Fourier coefficients; elsewhere $a$ is the exponent in~\eqref{eq:power} & Section~\ref{sec:neg} \\
+$v$ & a leaf of $F_w$ in the proof for $a>0$ & Section~\ref{sec:neg} \\
+$\mathcal L$ & the Laplacian, $\mathcal L\chi_T=|T|\chi_T$ & Section~\ref{sec:neg} \\
+$\psi$, $\hat\psi$ & a balanced monotone function and its Fourier coefficients, in the argument for slowly varying weights & Section~\ref{sec:neg} \\
+$\tau_b$ & $\binom{b-1}{(b-1)/2}2^{1-b}$, the influence of a coordinate of $\mathrm{Maj}_b$ & Section~\ref{sec:neg} \\
+\bottomrule
+\end{longtable}
 
 \begin{thebibliography}{99}
 \bibitem{ACKSW} S.~Arunachalam, S.~Chakraborty, M.~Kouck\'y, N.~Saurabh, R.~de Wolf, Improved bounds on Fourier
