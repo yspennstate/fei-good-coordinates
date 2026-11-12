@@ -104,7 +104,7 @@ precision and with $40$-digit arithmetic.
 
 \section{Composition}\label{sec:comp}
 
-\subsection{Biased expansion of the gate}
+\subsection{Biased expansion of the gate}\label{sec:biased}
 Let $g:\{-1,1\}^k\to\{-1,1\}$ and $\mu\in(-1,1)$. Put $\sigma=\sqrt{1-\mu^2}$ and $\phi_\mu(y)=(y-\mu)/\sigma$. If
 $y_1,\dots,y_k$ are independent with mean $\mu$, the products $\prod_{l\in T}\phi_\mu(y_l)$ are orthonormal, and
 \[
@@ -503,7 +503,7 @@ For $a>0$ let $F(x,y)=\mathrm{Maj}(y)\vee(x\wedge\bigwedge_{j\in A}y_j)$ be the 
 Proposition~\ref{prop:maxinf}, before the majority substitution, and replace each $y_j$ by a copy of the tribes
 function $T(w,s)$ on fresh variables, with $s=\mathrm{round}(2^w\ln2)$. Call the result $F_w$; it is monotone. The
 tribes function
-has mean $\mu_w=2(1-2^{-w})^s-1$, and $\mu_w\to0$ as $w\to\infty$. The expansion of Section~2.1 applies with $x$ kept
+has mean $\mu_w=2(1-2^{-w})^s-1$, and $\mu_w\to0$ as $w\to\infty$. The expansion of Section~\ref{sec:biased} applies with $x$ kept
 as a block of its own, expanded in the uniform basis, and each $y_j$ expanded in the $\mu_w$-biased basis. Whether
 $x\in U$ depends only on the first stage of the draw, so by homogeneity of $m$ the quantities $E_x(F_w)$ and
 $\Inf_x(F_w)$ are those of $F$ computed in this mixed basis. They are continuous in $\mu_w$, and therefore converge to
@@ -610,7 +610,7 @@ $\G(f)$, $\G$ & $\min_{i:\Inf_i(f)>0}E_i(f)/\Inf_i(f)$, and its supremum over al
 $\G_{\mathrm{mon}}$ & the supremum of $\G(f)$ over monotone $f$ & Section~\ref{sec:intro} \\
 $\mu$, $\sigma$, $\phi_\mu$ & a mean in $(-1,1)$, $\sigma=\sqrt{1-\mu^2}$, and $\phi_\mu(y)=(y-\mu)/\sigma$ & Section~\ref{sec:comp} \\
 $\hat g_\mu(T)$ & the $\mu$-biased Fourier coefficient of a gate $g$ at $T\subseteq[k]$; used in Sections~\ref{sec:comp} and~\ref{sec:towers} & Section~\ref{sec:comp} \\
-$g$, $h$, $k$ & a gate on $k$ inputs and the inner function, in the composition $f=g(h,\dots,h)$; these meanings hold in Sections~1 to~\ref{sec:towers} & Section~\ref{sec:intro} \\
+$g$, $h$, $k$ & a gate on $k$ inputs and the inner function, in the composition $f=g(h,\dots,h)$; these meanings hold in Sections~\ref{sec:intro} to~\ref{sec:towers} & Section~\ref{sec:intro} \\
 $A_l$, $B$ & a nonempty subset of block $l$; and $U\setminus\{i\}$ in~\eqref{eq:Esplit} & Section~\ref{sec:comp} \\
 $h_2$ & the binary entropy $h_2(p)=-p\log_2p-(1-p)\log_2(1-p)$ & Section~\ref{sec:comp} \\
 $m(a,b)$ & the unnormalised two-point entropy $(a+b)\,h_2\bigl(b/(a+b)\bigr)$, with $m(0,0)=0$ & Section~\ref{sec:comp} \\
