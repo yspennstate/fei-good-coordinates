@@ -202,7 +202,7 @@ true when two opposite edges are both present (a copy of $T(2,3)$).
 \end{itemize}
 Each gate is monotone and its automorphism group is transitive on its inputs. A word $g_1g_2\cdots g_d$ denotes the
 iterated composition in which $g_1$ is applied to disjoint blocks of variables, $g_2$ to disjoint blocks of copies
-of the result, and so on; a word is read from the bottom gate to the top gate. Compositions of monotone functions
+of the result, and in general $g_{i+1}$ to disjoint blocks of copies of $g_1\cdots g_i$; a word is read from the bottom gate to the top gate. Compositions of monotone functions
 are monotone, and since every gate is transitive the composition is transitive on its leaves, so
 $\G(f)=E_i(f)/\Inf_i(f)$ for any leaf $i$. That ratio is computed by iterating Theorem~\ref{thm:comp} from the
 state $(0,1,0,1)$ of a single variable.
@@ -326,7 +326,7 @@ for every $f$, Li and Han~\cite{LH25} lower the constant $2+3/\ln 2$ to the shar
 average unambiguous parity-certificate complexity.
 
 \subsection{Read-once formulas}
-For read-once formulas a much stronger statement holds: every relevant leaf is good, with a sharp constant.
+For read-once formulas a stronger statement holds: every relevant leaf is good, with a sharp constant.
 
 \begin{theorem}\label{thm:readonce}
 Let $f$ be a read-once formula over AND and OR with literals at the leaves. Every leaf $i$ with $\Inf_i(f)>0$
