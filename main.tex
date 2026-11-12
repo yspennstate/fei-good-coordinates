@@ -365,8 +365,8 @@ $P_{r-1}-P_r$ and none is nonempty with probability $\delta$. Now apply~\eqref{e
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:readonce}]
-Let $a_l\le b_l$ be the probabilities that $f_l$ is true when $x_i$ is false, respectively true, and
-$d_l=b_l-a_l=P_l$. Put $\alpha=a/d$, $\beta=(1-b)/d$, so $\gamma=1+\alpha+\beta=1/d$. An AND gate keeps $\alpha$ and raises
+Let $a_l\le b_l$ be the probabilities that $f_l$ is true when $x_i$ is false, respectively true, so that
+$b_l-a_l=P_l$. Put $\alpha=a_l/P_l$, $\beta=(1-b_l)/P_l$, so $\gamma=1+\alpha+\beta=1/P_l$. An AND gate keeps $\alpha$ and raises
 $\beta$; an OR gate keeps $\beta$ and raises $\alpha$. In terms of the values $(\alpha,\beta)$ before gate $r$,
 $\sum_{l<r}c_l(1-p_l)/P_l=\beta-\alpha$ (with $c=-1$ for true), so $|R_r|=1+2\alpha$ at an AND and $|R_r|=1+2\beta$ at an
 OR, and $|R_\infty|=|\beta-\alpha|$ at the end. With $\psi(t)=\Phi(2t+1)$, the charge of an AND step is
@@ -629,7 +629,7 @@ $\Phi$ & $\Phi(u)=\Lambda(u^2,1)$; used in Sections~\ref{sec:classes} and~\ref{s
 $L$ & the number of gates on the path from a leaf to the root & Theorem~\ref{thm:readonce} \\
 $Z_l$, $p_l$, $c_l$, $P_l$ & along the path from a leaf to the root: the event that gate $l$ passes the path child, its probability, the output when blocked, and $p_1\cdots p_l$ & Theorem~\ref{thm:readonce} \\
 $R_r$, $R_\infty$ & the sums defined in Lemma~\ref{lem:path} & Lemma~\ref{lem:path} \\
-$\alpha$, $\beta$, $\gamma$ & $a_l/d_l$, $(1-b_l)/d_l$ and $1+\alpha+\beta$ in the proof of Theorem~\ref{thm:readonce} & Section~\ref{sec:classes} \\
+$\alpha$, $\beta$, $\gamma$ & $a_l/P_l$, $(1-b_l)/P_l$ and $1+\alpha+\beta$ in the proof of Theorem~\ref{thm:readonce} & Section~\ref{sec:classes} \\
 $\psi$, $\Omega$, $\Theta$ & $\psi(t)=\Phi(2t+1)$ and the potential functions of the proof of Theorem~\ref{thm:readonce} & Section~\ref{sec:classes} \\
 $\nu$, $q$, $K$ & $q=1-2^{-\nu}$ and the number $K=\nu2^\nu$ of gates in the sharpness construction for Theorem~\ref{thm:readonce} & Section~\ref{sec:classes} \\
 $k$, $m$ & $k=2m+1$, the number of variables of $\mathrm{Maj}$ & Section~\ref{sec:neg} \\
