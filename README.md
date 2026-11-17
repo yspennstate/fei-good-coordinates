@@ -6,11 +6,11 @@ This repository contains a paper on the Fourier entropy-influence (FEI) conjectu
 with the scripts behind every numerical value in it.
 
 Paper: [main.pdf](main.pdf) (source [main.tex](main.tex)).
-Zenodo: [doi:10.5281/zenodo.24139705](https://doi.org/10.5281/zenodo.24139705).
+Zenodo: [doi:10.5281/zenodo.24125398](https://doi.org/10.5281/zenodo.24125398) (all versions).
 
 ## Summary
 
-For a Boolean function f, let U be drawn from the spectral distribution and put
+For a Boolean function f, let U be the spectral sample and put
 E_i(f) = H(1[i in U] | U minus i). FEI holds if and only if G = sup_f min_i E_i(f)/Inf_i(f) is finite, and then its
 constant lies between G and G + 2/ln 2 ([one-coordinate note](https://github.com/yspennstate/fourier-entropy-influence-one-coordinate)).
 The paper studies G directly.

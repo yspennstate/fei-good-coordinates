@@ -23,15 +23,14 @@
 \begin{document}
 
 \begin{abstract}
-For a Boolean function $f$ and a coordinate $i$, let $E_i(f)$ be the conditional entropy of the event $i\in U$ given
-$U\setminus\{i\}$, where $U$ is drawn from the spectral distribution. The Fourier entropy-influence conjecture holds if
-and only if there is one constant $C$ such that every nonconstant Boolean function has a coordinate with
-$E_i\le C\Inf_i$. An exact identity for block compositions, applied to towers of monotone gates, shows that the least
-such constant for monotone functions is at least $4.5064$. In the other direction, every formula in disjunctive normal
-form of width $w$ has a coordinate whose ratio $E_i/\Inf_i$ is below $w+4.45$, and every relevant leaf of a read-once
-formula has ratio below $\pi/\ln2$, which is sharp. Three natural ways of choosing the coordinate fail: the coordinate
-of largest influence, a typical coordinate, and averages of the ratios weighted by a power of the influence other than
-the first.
+For a Boolean function $f$ and a coordinate $i$, let $E_i(f)$ be the erasure entropy, the conditional entropy of the
+event $i\in U$ given $U\setminus\{i\}$, where $U$ is the spectral sample. The Fourier entropy-influence conjecture
+holds if and only if there is one constant $C$ such that every nonconstant Boolean function has a good coordinate, one
+with $E_i\le C\Inf_i$. An exact identity for $E_i$ and $\Inf_i$ under block composition, applied to iterated
+compositions of monotone gates, shows that the least such constant for monotone functions is at least $4.5064$.
+Every DNF of width $w$ has a coordinate with ratio $E_i/\Inf_i$ below $w+4.45$, and every relevant leaf of a read-once
+formula has ratio below $\pi/\ln2$, which is sharp. The coordinate of largest influence can fail, almost every
+coordinate can fail, and so can averages of the ratios weighted by a power of the influence other than the first.
 \end{abstract}
 
 \subjclass[2020]{06E30, 42C10, 94A17}
@@ -57,48 +56,61 @@ that every Boolean function has a coordinate $i$ at which the entropy drop
 $H(f)-\tfrac12H(f_{i\to1})-\tfrac12H(f_{i\to-1})$ is at most $K\Inf_i(f)$. They also observe that the choice of
 coordinate matters: for their $\delta$-tribes functions a stronger form of the inequality fails at one coordinate
 and holds, with constant $38$, at another~\cite[Section~5]{GMP}. In~\cite{Shm2} it is shown that the reduction is
-lossless up to an additive $2/\ln 2$, in the following form. Write
+lossless up to an additive $2/\ln 2$ when the entropy drop is replaced by the erasure entropy of Verd\'u and
+Weissman~\cite{VW08},
 \[
-E_i(f)=H\bigl(\mathbf 1[i\in U]\bigm| U\setminus\{i\}\bigr),\qquad
+E_i(f)=H\bigl(\mathbf 1[i\in U]\bigm| U\setminus\{i\}\bigr).
+\]
+Call a coordinate $i$ \emph{$C$-good} for $f$ if $E_i(f)\le C\Inf_i(f)$, and write
+\[
 \G(f)=\min_{i:\,\Inf_i(f)>0}\frac{E_i(f)}{\Inf_i(f)},\qquad \G=\sup_f\G(f),
 \]
-the supremum over all nonconstant Boolean functions on any number of variables. Then
+the supremum over all nonconstant Boolean functions on any number of variables, so that $\G$ is the least $C$ for
+which every such function has a $C$-good coordinate. Then
 \[
 \G\le C^\ast\le\G+\frac{2}{\ln 2}.
 \]
-So the conjecture is equivalent to $\G<\infty$, and any proof of it that proceeds by choosing one good coordinate
-at a time needs a selection rule whose ratio $E_i/\Inf_i$ is bounded. This paper studies $\G$ itself: how large it
-must be, which classes have a coordinate with bounded ratio, and which natural selection rules fail.
+So the conjecture is equivalent to $\G<\infty$. A good coordinate is easy to find when its influence is a fixed
+fraction of the variance, since every coordinate satisfies $E_i/\Inf_i\le2+\log_2e+\log_2(1+\mathrm{Var}(f)/\Inf_i)$
+(Lemma~\ref{lem:var}, from~\cite{ShmVar}). The difficulty is the opposite case. A coordinate that changes $f$ at a
+single point of a cube of dimension $k$ has $E_i/\Inf_i$ of order $k$~\cite[Proposition~7]{Shm2}; the same device
+gives the example of~\cite[Proposition~5.1]{GMP}. Section~\ref{sec:neg} shows that in monotone functions it occurs at
+the coordinate of largest influence and at all but $k$ of $k+\binom{k}{(k-1)/2}$ coordinates. To bound $\G$ from
+below one needs $E_i$ for every leaf of a large composition. O'Donnell and Tan~\cite{OT13} prove that a strengthened
+form of the conjecture is preserved under composition, an inequality for the whole spectral entropy, and iterate a
+balanced $g$ to amplify $H/\mathrm I$. For $E_i$ and $\Inf_i$ of one leaf the corresponding tool is an identity: four
+numbers attached to a leaf (the mean, $\hat h(\{i\})^2$, the part of $E_i$ over nonempty $U\setminus\{i\}$, and
+$\Inf_i$) are carried exactly through each gate (Theorem~\ref{thm:comp}).
 
 \paragraph{Results.}
-Section~\ref{sec:comp} gives an exact formula for $E_i$ and $\Inf_i$ under block composition $f=g(h,\dots,h)$
-(Theorem~\ref{thm:comp}). The formula carries four numbers per leaf through each level of a composition, so towers
-of depth ten or more on $10^{12}$ and more variables are computed in milliseconds and to any precision.
+A \emph{gate} is a Boolean function $g$ of $k$ inputs. In the block composition $f=g(h,\dots,h)$ each input of $g$
+is fed by a copy of $h$ on its own variables, and the variables of $f$ are its \emph{leaves}.
+Section~\ref{sec:comp} gives the exact formula for $E_i$ and $\Inf_i$ of a leaf under block composition
+(Theorem~\ref{thm:comp}); the cost of one level is $O(k2^k)$, independent of the number of variables below it.
 
 Section~\ref{sec:towers} uses it to bound $\G_{\mathrm{mon}}$, the supremum of $\G(f)$ over monotone $f$, from below.
-When every gate is transitive on its inputs, every leaf of the tower has the same ratio, so the ratio of one leaf is
-$\G(f)$. Towers of the perfect matching function of $K_{3,3}$ and its dual already give $\G_{\mathrm{mon}}>4.505$;
+A \emph{tower} is an iterated composition of gates, written as a word $g_1g_2\cdots g_d$ from the bottom gate to the
+top. When every gate is monotone and transitive on its inputs, every leaf of the tower has the same ratio, so the
+ratio of one leaf is $\G(f)$. Towers of the perfect matching function of $K_{3,3}$ and its dual already give $\G_{\mathrm{mon}}>4.505$;
 mixed words of six gate types give
 \[
 \G\ge\G_{\mathrm{mon}}\ge 4.5064284654452331779\dots
 \]
-This is below the bound $C^\ast>6.5218$, as it must be: towers are built to make one coordinate's ratio large,
-and the spectral entropy of these functions is far from extremal. The point of the bound is the other one: any
-proof of FEI through a good coordinate must allow ratio at least $4.506$ already for monotone functions.
+Since $\G\le C^\ast$, a proof of FEI that chooses one coordinate at a time must allow $E_i/\Inf_i\ge4.5064$,
+already for monotone functions; the bound does not improve $C^\ast>6.5218$.
 
 Section~\ref{sec:classes} bounds $\G(f)$ from above for classes. Every coordinate satisfies
 $E_i/\Inf_i\le 2+\log_2 e+\log_2(1+\mathrm{Var}(f)/\Inf_i)$, and from this every width-$w$ formula in disjunctive or conjunctive normal form (DNF or CNF) has a
 coordinate with ratio at most $2+\log_2 e+\log_2(2^{w+1}-1)$. For read-once AND/OR formulas every relevant leaf
-has ratio below $\pi/\ln 2$, and the constant is attained in the limit.
+has ratio below $\pi/\ln 2$, and the constant is attained in the limit; the bound of~\cite{Shm1} for the whole
+entropy drop already makes this ratio bounded, with a larger constant.
 
-Section~\ref{sec:neg} gives three negative results. The coordinate of largest influence can have unbounded ratio,
+A \emph{selection rule} assigns to each Boolean function one of its coordinates. Section~\ref{sec:neg} shows that
+three such rules fail. The coordinate of largest influence can have unbounded ratio,
 even for monotone functions. In a monotone function built from a middle-layer slice all but $k$ of
 $\binom{k}{\lfloor k/2\rfloor}+k$ coordinates can have ratio above any prescribed constant. And the weighted
 inequalities $\sum_i\Inf_i^{a}E_i\le C\sum_i\Inf_i^{a+1}$, which would give a selection rule by averaging, fail for
-every $a\ne0$. The case $a=0$ is the conjecture itself.
-
-All numerical values in this paper are reproduced by the scripts in the accompanying repository, in double
-precision and with $40$-digit arithmetic.
+every $a\ne0$. The case $a=0$ is the monotone conjecture in the form $\sum_iE_i\le C\,\mathrm I$.
 
 \section{Composition}\label{sec:comp}
 
@@ -168,12 +180,10 @@ $e'$, the part of $E_i(f)$ over nonempty $U\setminus\{i\}$.
 
 A single variable $x_i$ has state $(0,1,0,1)$. Iterating Theorem~\ref{thm:comp} computes the state of any leaf of an
 iterated composition $g_d(\dots g_2(g_1(x,\dots),\dots)\dots)$, and the cost of a level is one biased transform of
-the gate, $O(k2^k)$, independent of the number of variables below it. We checked the formula against brute-force
-Fourier transforms on all $444$ leaf positions of depth-two compositions of gates on three and four variables, with
-largest discrepancy $3.3\times10^{-16}$.
+the gate, $O(k2^k)$, independent of the number of variables below it.
 
 \begin{remark}
-If $g$ is transitive on its inputs, so is the composition on its leaves, and every leaf has the same state. For such
+If $g$ and $h$ are transitive on their inputs, so is the composition on its leaves, and every leaf has the same state. For such
 towers the ratio of one leaf is $\G(f)$ and also $\max_iE_i/\Inf_i$; a lower bound on $\G$ then needs no search over
 coordinates. Without transitivity the formula still applies to each leaf separately, with $W_j$ and $\hat g(\{j\})$
 taken at that leaf's position.
@@ -205,8 +215,8 @@ $\G(f)=E_i(f)/\Inf_i(f)$ for any leaf $i$. That ratio is computed by iterating T
 state $(0,1,0,1)$ of a single variable.
 
 \begin{proposition}\label{prop:towers}
-For the words in Table~\ref{tab:towers} the iterated compositions are monotone Boolean functions with
-$\G(f)$ equal to the value shown, to the number of digits shown. In particular
+For the words in Table~\ref{tab:towers} the iterated compositions are monotone Boolean functions, and for
+$D\,M^{12}$ and the last two words $\G(f)$ equals the value shown to the number of digits shown. In particular
 \[
 \G_{\mathrm{mon}}\ge 4.50642846544523317790928639\dots
 \]
@@ -228,24 +238,17 @@ $D\,M^{8}\,N^\ast\,M\,M\,\mathrm{Tr}(3,5)$ & $7.5\times10^{12}$ & $4.50642846293
 $M\,D^{8}\,N\,D\,D\,\mathrm{Tr}(4,3)^\ast\,\mathrm{Tr}(3,5)\,\mathrm{Tr}(3,5)$ & $1.4\times10^{15}$ & $4.50642846544523317790928639245$\\
 \bottomrule
 \end{tabular}
-\caption{Lower bounds for $\G_{\mathrm{mon}}$ from towers. Values to 30 digits are computed with 40-digit arithmetic.}
+\caption{Lower bounds for $\G_{\mathrm{mon}}$ from towers. The rows $D\,M^{12}$ and the last two are enclosed in
+interval arithmetic; the others are computed in 40-digit arithmetic and agree to the digits shown with 60-digit
+arithmetic.}
 \label{tab:towers}
 \end{table}
 
 \begin{proof}
-Each value is the output of Theorem~\ref{thm:comp} iterated along the word, with the biased coefficients of each gate
-computed from its truth table. The computation is exact up to rounding, and was carried out with 40 significant
-digits; the digits shown are stable under a change to 60. For $D\,M^{12}$ and the last two rows the iteration was
-also run in 60-digit interval arithmetic with outward rounding; each enclosure has width below $10^{-48}$ and
-contains the value shown. Theorem~\ref{thm:comp} itself was checked against
-brute-force Fourier transforms as described at the end of Section~\ref{sec:comp}.
+Each value is Theorem~\ref{thm:comp} iterated along the word, with the biased coefficients of each gate computed
+from its truth table. For $D\,M^{12}$ and the last two words the iteration in 60-digit interval arithmetic with
+outward rounding gives enclosures of width below $10^{-48}$ that contain the values shown.
 \end{proof}
-
-\begin{remark}
-Double precision is not enough to rank long towers. For the last word of Table~\ref{tab:towers} the double-precision
-iteration returns $4.506428469267$, an error of $3.8\times10^{-9}$, which is larger than the gap of
-$2.5\times10^{-9}$ between the last two rows. The ordering of the table is that of the 40-digit values.
-\end{remark}
 
 \begin{remark}[Where the value comes from]
 For $M$ the mean map $\mu\mapsto\hat M_\mu(\emptyset)$ has a fixed point at $\mu^\ast=-0.0349185099940\dots$, where
@@ -254,10 +257,8 @@ $-0.03515625$, close to $\mu^\ast$, and a run of $M$ gates then keeps the mean n
 before it escapes; the top gates spend what is left. If the mean could be held at $\mu^\ast$ for ever, starting from
 the state produced by $D$, the ratio would tend to $4.5064554626637$. This is a heuristic target rather than a
 bound: no finite tower holds the mean at a repelling fixed point, the limit depends on the starting state
-($4.5064428$ from the state after $D\,M$, $4.5064353$ after $D\,M\,M$), and we do not know whether
-$\G_{\mathrm{mon}}$ exceeds it. The same heuristic for other gates gives larger targets, $4.5168$ for $\mathrm{Tr}(2,2)^\ast$
-pinned at its fixed mean $0.236068$ and $4.5107$ for $\mathrm{Tr}(4,3)^\ast$, but towers that bring the mean close to these
-fixed points carry a smaller leaf ratio, and none of depth at most four below the pinned gate exceeds $4.504$.
+($4.5064428$ from the state after $D\,M$, $4.5064353$ after $D\,M\,M$). Whether $\G_{\mathrm{mon}}$ exceeds it is
+open.
 \end{remark}
 
 \section{Classes with a good coordinate}\label{sec:classes}
@@ -268,25 +269,18 @@ $p_T=\hat f(T)^2$ and $q_T=\hat f(T\cup\{i\})^2$. Conditioning on $U\setminus\{i
 E_i(f)=\sum_{T\not\ni i}\Lambda(p_T,q_T),\qquad \Inf_i(f)=\sum_{T\not\ni i}q_T .
 \end{equation}
 The function $\Lambda$ is concave, increasing in each argument and homogeneous of degree one, hence superadditive:
-$\sum_T \Lambda(a_T,b_T)\le \Lambda(\sum_Ta_T,\sum_Tb_T)$. Write $\xi=\E_if$ and $\eta=\mathrm D_if$, so that $f=\xi+x_i\eta$,
+$\sum_T \Lambda(a_T,b_T)\le \Lambda(\sum_Ta_T,\sum_Tb_T)$. Write $\xi=\mathrm{Av}_if$ and $\eta=\mathrm D_if$, so that $f=\xi+x_i\eta$,
 $p_T=\hat \xi(T)^2$ and $q_T=\hat \eta(T)^2$; since $\eta$ takes values in $\{-1,0,1\}$, $\sum_Tq_T=\E \eta^2=\delta$.
 
-\begin{lemma}\label{lem:var}
+\begin{lemma}[{\cite[Lemma~5]{ShmVar}}]\label{lem:var}
 For every Boolean $f$ and every coordinate $i$ with $\delta=\Inf_i(f)>0$,
 \[
 \frac{E_i(f)}{\delta}\le 2+\log_2e+\log_2\Bigl(1+\frac{\mathrm{Var}(f)}{\delta}\Bigr).
 \]
 \end{lemma}
 
-\begin{proof}
-For $t\in[0,1]$ one has $h_2(t)\le 2\sqrt{t(1-t)}$, so $\Lambda(a,b)\le 2\sqrt{ab}$. The term $T=\emptyset$ is therefore at
-most $2\sqrt{q_\emptyset}=2|\E \eta|\le 2\delta$. For the others, $\sum_{T\ne\emptyset}p_T=\mathrm{Var}(\xi)\le\mathrm{Var}(f)=V$
-and $\sum_{T\neq\emptyset}q_T\le\delta$, so by superadditivity and monotonicity
-\[
-\sum_{T\ne\emptyset}\Lambda(p_T,q_T)\le \Lambda(V,\delta)=V\log_2\Bigl(1+\frac{\delta}{V}\Bigr)+\delta\log_2\Bigl(1+\frac V\delta\Bigr)
-\le\frac{\delta}{\ln2}+\delta\log_2\Bigl(1+\frac V\delta\Bigr).\qedhere
-\]
-\end{proof}
+The proof bounds the term $T=\emptyset$ of~\eqref{eq:erasure} by $2\delta$, using $h_2(t)\le2\sqrt{t(1-t)}$, and the
+rest by superadditivity of $\Lambda$.
 
 So a coordinate whose influence is a fixed fraction of the variance is good. Width supplies one.
 
@@ -353,7 +347,7 @@ $R_r=\sum_{l<r}c_l(1-p_l)/P_l-c_r/P_{r-1}$ and $R_\infty=\sum_{l\le L}c_l(1-p_l)
 \end{lemma}
 
 \begin{proof}
-Unrolling the recursion, $\eta=\mathrm D_if=\prod_lZ_l$ and $\xi=\E_if=\sum_lc_l(1-Z_l)\prod_{j>l}Z_j$. A frequency
+Unrolling the recursion, $\eta=\mathrm D_if=\prod_lZ_l$ and $\xi=\mathrm{Av}_if=\sum_lc_l(1-Z_l)\prod_{j>l}Z_j$. A frequency
 $S\not\ni i$ splits into block parts $S_l$, and $\hat \eta(S)=\prod_l\hat Z_l(S_l)$ with $\hat Z_l(\emptyset)=p_l$. If
 $r$ is the first $l$ with $S_l\ne\emptyset$, only the terms $l\le r$ of $\xi$ contribute, and
 $\hat \xi(S)=R_r\hat \eta(S)$; if all $S_l$ are empty, $\hat \xi(S)=R_\infty\hat \eta(S)$. By homogeneity
@@ -405,23 +399,25 @@ charges are Riemann sums of $\int_1^{q^{-K}}\Phi(u)u^{-2}\,du$ with mesh tending
 nonnegative, so the ratio tends to $\pi/\ln2$ as $\nu\to\infty$. These formulas have $1+\nu^22^\nu$ variables.
 \end{proof}
 
-The values for $\nu=2,4,\dots,14$ are $3.633$, $4.326$, $4.492$, $4.525$, $4.531$, $4.5322$, $4.5323$, and the
-identity of Lemma~\ref{lem:path} agrees with brute-force transforms of random guarded paths to $3\times10^{-15}$.
-Read-once formulas are known to satisfy FEI~\cite{OWZ,CKLS,OT13}, and for the whole one-coordinate step
-$H(f)-\frac12H(f_{i\to1})-\frac12H(f_{i\to-1})$ every leaf of a read-once formula has ratio below $5+\ln4$ in
-nats~\cite{Shm1}; the
-content of Theorem~\ref{thm:readonce} is that the erasure ratio is bounded at every leaf, however small its influence,
-with the exact constant.
+The values for $\nu=2,4,\dots,14$ are $3.633$, $4.326$, $4.492$, $4.525$, $4.531$, $4.5322$, $4.5323$.
+Read-once formulas are known to satisfy FEI~\cite{CKLS,OT13}. For the whole one-coordinate step
+$H(f)-\frac12H(f_{i\to1})-\frac12H(f_{i\to-1})$ every leaf of a read-once formula has ratio below
+$(5+\ln4)/\ln2\approx9.21$ in bits~\cite{Shm1}, and since the step is $E_i$ plus a nonnegative
+term~\cite[Lemma~2]{Shm2}, this already bounds $E_i/\Inf_i$ at every leaf. Theorem~\ref{thm:readonce} gives the exact
+constant $\pi/\ln2\approx4.53$, uniformly over the leaves.
 
 \section{Selection rules that fail}\label{sec:neg}
 
-All three constructions below use one device, a single point added to a monotone function, which is also the source of
-the example in~\cite[Proposition~5.1]{GMP}. Let $k=2m+1$, write $\mathrm{Maj}$ for majority on $k$ variables with value
+All three constructions below use one device, a single point added to a monotone function. In~\cite[Proposition~7]{Shm2}
+a coordinate that enters a function at one point of a cube of dimension $k$ has ratio $k+\log_2e+O(2^{-k/2})$, and
+the device is also the source of the example in~\cite[Proposition~5.1]{GMP}. What is new below is that the functions
+are monotone and that the coordinate can be the one of largest influence, or almost every coordinate. Further
+selection rules that fail, by level-two weight and by minterms, are in~\cite{ShmHid}. Let $k=2m+1$, write $\mathrm{Maj}$ for majority on $k$ variables with value
 $-1$ when true, and let $\hat{\mathrm{Maj}}$ denote its Fourier coefficients. For odd $|T|=2j+1$,
 \[
 |\hat{\mathrm{Maj}}(T)|=\frac{\binom{2m}{m}}{4^m}\cdot\frac{\binom mj}{\binom{2m}{2j}}
 \]
-\cite[Section~5.3]{ODo}. From $\binom{2m}m\ge4^m/(2m+1)$, $\binom mj\ge2^{mh_2(j/m)}/(m+1)$ and
+(see~\cite[Section~5.3]{ODo}). From $\binom{2m}m\ge4^m/(2m+1)$, $\binom mj\ge2^{mh_2(j/m)}/(m+1)$ and
 $\binom{2m}{2j}\le2^{2mh_2(j/m)}$,
 \begin{equation}\label{eq:majlow}
 2^k|\hat{\mathrm{Maj}}(T)|\ge\frac{2^{m+1}}{(2m+1)(m+1)}\qquad(|T|\text{ odd}).
@@ -437,7 +433,7 @@ $E_i/\Inf_i>C$.
 \begin{proof}
 Fix an $m$-subset $A$ of $[k]$ and let $F(x,y)=\mathrm{Maj}(y)\vee(x\wedge\bigwedge_{j\in A}y_j)$. The only $y$ at which
 $x$ matters is $y=1_A$, so $\Inf_x(F)=2^{-k}$, $\mathrm D_xF=\pm\mathbf 1[y=1_A]$ and $q_T=4^{-k}$ for all $T\subseteq[k]$.
-Moreover $\E_xF=\mathrm{Maj}-\mathrm{Maj}(1_A)\mathbf 1[y=1_A]$ differs from $\mathrm{Maj}$ in each coefficient by $2^{-k}$.
+Moreover $\mathrm{Av}_xF=\mathrm{Maj}-\mathrm{Maj}(1_A)\mathbf 1[y=1_A]$ differs from $\mathrm{Maj}$ in each coefficient by $2^{-k}$.
 Since $\Lambda(a,b)\ge b\log_2(1+a/b)$, \eqref{eq:erasure} and~\eqref{eq:majlow} give, for $m$ large,
 \[
 \frac{E_x(F)}{\Inf_x(F)}\ge2^{-k}\sum_{|T|\text{ odd}}\log_2\bigl(1+(2^k\hat F(T))^2\bigr)
@@ -452,7 +448,7 @@ largest influence, and the composition is monotone.
 
 For $k=3,5,\dots,17$ the ratio of $x$ is $3.52$, $4.24$, $4.99$, $5.78$, $6.62$, $7.48$, $8.37$, $9.27$.
 
-\subsection{Most coordinates hidden}
+\subsection{Almost every coordinate}
 
 \begin{proposition}\label{prop:middle}
 For $k=2m+1$ let
@@ -480,15 +476,17 @@ So all but $k$ of the $k+\binom km$ coordinates have unbounded ratio. The $k$ ba
 $r=\binom km$ and $\varepsilon=2^{-k}$, a base coordinate $y_1$ has influence $r\varepsilon$. A frequency containing one hidden
 variable $z_B$ has coefficient $\pm2^{-k}\chi_T(1_B)$ at $T\cup\{z_B\}$, $T\subseteq[k]$, so the pairs $T$,
 $T\cup\{1\}$ have equal squares $4^{-k}$, and since $\Lambda(c,c)=2c$ these frequencies contribute exactly $r\varepsilon$ to
-$E_{y_1}$. The remaining frequencies give $E_{y_1}(a)$, so the ratio of $y_1$ is $1+E_{y_1}(a)/(r\varepsilon)$, which
-is $2.14$ at $k=17$. At $k=17$ the hidden ratio is $14.45$, against $\log_2\binom{17}8=14.57$.
+$E_{y_1}$. The remaining frequencies are those of $\rho$, and they give
+$E_{y_1}(\rho)=\sum_{T\not\ni1}\Lambda(\hat\rho(T)^2,\hat\rho(T\cup\{1\})^2)$, the sum~\eqref{eq:erasure} formed from
+the coefficients of $\rho$. So the ratio of $y_1$ is $1+E_{y_1}(\rho)/(r\varepsilon)$, which is $2.14$ at $k=17$. At
+$k=17$ the ratio of each $z_A$ is $14.45$, against $\log_2\binom{17}8=14.57$.
 
 \subsection{Power weights}
 Averaging $E_i/\Inf_i$ with weights $\Inf_i^{a+1}$ would give a good coordinate if
 \begin{equation}\label{eq:power}
 \sum_i\Inf_i(f)^aE_i(f)\le C\sum_i\Inf_i(f)^{a+1}
 \end{equation}
-held for all monotone $f$. For $a=0$ this is the monotone case of the FEI conjecture with $\sum_iE_i$ in place of $H$.
+held for all monotone $f$. For $a=0$ this is the monotone conjecture in the form $\sum_iE_i\le C\,\mathrm I$.
 
 \begin{proposition}
 For every $a\ne0$ there is no $C$ for which~\eqref{eq:power} holds for all monotone functions.
@@ -574,20 +572,22 @@ The paper comes out of Math Brain, a project on the use of AI systems in researc
 mathematics~\cite{BrainFramework,MathBrainRepo}. Codex agents running OpenAI's GPT-6.1 ran the tower searches and the
 search over $K_{3,3}$-invariant bases, and proposed the bounds of Section~\ref{sec:classes} and the examples of
 Section~\ref{sec:neg}. Claude agents (Anthropic: Fable and Opus~5.5) found the largest tower of
-Table~\ref{tab:towers}, the pinned-mean limit and the extensions of the power-weight result, wrote the proofs in their
-present form, checked every computation with independent code and prepared the manuscript. The author directed the
+Table~\ref{tab:towers}, the fixed-point heuristic and the extensions of the power-weight result, wrote the proofs in
+their present form, checked every computation with independent code and prepared the manuscript. The results rest on
+the one-coordinate reduction of Gonz\'alez, MacManus and Pereyra~\cite{GMP}, the erasure entropy of Verd\'u and
+Weissman~\cite{VW08} and the composition theorem of O'Donnell and Tan~\cite{OT13}. The bound of Keller, Mossel and
+Schlank~\cite{KMS} and the work of Chakraborty, Kulkarni, Lokam and Saurabh~\cite{CKLS} on read-once formulas are
+also used. The author directed the
 work and is responsible for the content of the paper.
 
 \section*{Code and data availability}
-Code and outputs: \url{https://github.com/yspennstate/fei-good-coordinates}, archived on Zenodo with doi:10.5281/zenodo.24125398.
-
-The paper is part of the Math Brain project, whose public repository is
-\url{https://github.com/yspennstate/math-brain-public}~\cite{MathBrainRepo}.
+Code and outputs: \url{https://github.com/yspennstate/fei-good-coordinates}, archived on Zenodo with doi:10.5281/zenodo.24125398 (all versions). The scripts there reproduce every numerical
+value in the paper.
 
 \appendix
 \section{Notation}\label{app:notation}
 
-Symbols are listed in the order in which they first appear, and the last column gives that place. The letter $k$ and the gate names of Section~\ref{sec:towers}, are reused with different meanings in
+Symbols are listed in the order in which they first appear, and the last column gives that place. The letter $k$ and the gate names of Section~\ref{sec:towers} are reused with different meanings in
 different sections; the meaning column says where each meaning holds.
 
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.19\textwidth}>{\raggedright\arraybackslash}p{0.54\textwidth}>{\raggedright\arraybackslash}p{0.2\textwidth}@{}}
@@ -602,7 +602,7 @@ $H(f)$ & the spectral entropy $H(U)$, in bits & Section~\ref{sec:intro} \\
 $\Inf_i(f)$ & the influence of $i$, $\Pr[i\in U]$ & Section~\ref{sec:intro} \\
 $\mathrm I(f)$ & the total influence $\sum_i\Inf_i(f)$ & Section~\ref{sec:intro} \\
 $C^\ast$ & the least constant $C$ with $H(f)\le C\,\mathrm I(f)$ for all $f$ & Section~\ref{sec:intro} \\
-$E_i(f)$ & the conditional entropy $H(\mathbf 1[i\in U]\mid U\setminus\{i\})$ & Section~\ref{sec:intro} \\
+$E_i(f)$ & the erasure entropy $H(\mathbf 1[i\in U]\mid U\setminus\{i\})$ & Section~\ref{sec:intro} \\
 $\G(f)$, $\G$ & $\min_{i:\Inf_i(f)>0}E_i(f)/\Inf_i(f)$, and its supremum over all nonconstant Boolean $f$ & Section~\ref{sec:intro} \\
 $\G_{\mathrm{mon}}$ & the supremum of $\G(f)$ over monotone $f$ & Section~\ref{sec:intro} \\
 $\mu$, $\sigma$, $\phi_\mu$ & a mean in $(-1,1)$, $\sigma=\sqrt{1-\mu^2}$, and $\phi_\mu(y)=(y-\mu)/\sigma$ & Section~\ref{sec:comp} \\
@@ -620,8 +620,8 @@ $Q_2$, $R^\ast$ & $\mathrm{Tr}(2,2)^\ast$, and the dual of the function on the e
 $\delta$ & the parameter of the $\delta$-tribes functions of~\cite{GMP}; in Section~\ref{sec:classes}, the influence $\Inf_i(f)$ of the coordinate under study & Section~\ref{sec:intro} \\
 $\varepsilon$ & $2^{-k}$, in the constructions of Proposition~\ref{prop:middle} and after & Section~\ref{sec:neg} \\
 $p_T$, $q_T$ & $\hat f(T)^2$ and $\hat f(T\cup\{i\})^2$ for $T\not\ni i$ & Section~\ref{sec:classes} \\
-$\E_if$, $\mathrm D_if$ & $\tfrac12(f_{i\to1}+f_{i\to-1})$ and $\tfrac12(f_{i\to1}-f_{i\to-1})$, so that $f=\E_if+x_i\mathrm D_if$; used in Sections~\ref{sec:classes} and~\ref{sec:neg} & Section~\ref{sec:classes} \\
-$\xi$, $\eta$ & $\E_if$ and $\mathrm D_if$ & Section~\ref{sec:classes} \\
+$\mathrm{Av}_if$, $\mathrm D_if$ & $\tfrac12(f_{i\to1}+f_{i\to-1})$ and $\tfrac12(f_{i\to1}-f_{i\to-1})$, so that $f=\mathrm{Av}_if+x_i\mathrm D_if$; used in Sections~\ref{sec:classes} and~\ref{sec:neg} & Section~\ref{sec:classes} \\
+$\xi$, $\eta$ & $\mathrm{Av}_if$ and $\mathrm D_if$ & Section~\ref{sec:classes} \\
 $\mathrm{Var}(f)$, $V$ & the variance of $f$; $V$ in Theorem~\ref{thm:width} & Section~\ref{sec:intro} \\
 $\Phi$ & $\Phi(u)=\Lambda(u^2,1)$; used in Sections~\ref{sec:classes} and~\ref{sec:neg} & Lemma~\ref{lem:path} \\
 $L$ & the number of gates on the path from a leaf to the root & Theorem~\ref{thm:readonce} \\
@@ -681,6 +681,12 @@ Boolean functions, ICALP 2011, Lecture Notes in Comput. Sci. 6755, 330--341, doi
 arXiv:2609.21563, 2026.
 \bibitem{Shm1} Y.~Shmalo, Read-once formulas and a question of Han on the Fourier entropy-influence conjecture,
 \url{https://github.com/yspennstate/han-question-read-once-formulas}, doi:10.5281/zenodo.24064348, 2026.
+\bibitem{ShmVar} Y.~Shmalo, A variance form of Han's bound on the Fourier entropy,
+\url{https://github.com/yspennstate/fei-variance-han-bound}, doi:10.5281/zenodo.24125394, 2026.
+\bibitem{ShmHid} Y.~Shmalo, Hidden coordinates and selection rules in the Fourier entropy-influence conjecture,
+\url{https://github.com/yspennstate/fei-hidden-coordinates}, doi:10.5281/zenodo.24125561, 2026.
+\bibitem{VW08} S.~Verd\'u, T.~Weissman, The information lost in erasures, IEEE Trans. Inform. Theory 54 (2008),
+5030--5058.
 \bibitem{Shm2} Y.~Shmalo, The one-coordinate step in the Fourier entropy-influence conjecture,
 \url{https://github.com/yspennstate/fourier-entropy-influence-one-coordinate}, doi:10.5281/zenodo.24125404, 2026.
 \bibitem{ShmLTF} Y.~Shmalo, Fourier entropy of threshold functions and their compositions,
